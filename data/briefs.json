@@ -1,0 +1,32 @@
+[
+  {
+    "id": "2026-10-30",
+    "date": "2026-10-30",
+    "display_date": "10/30 (五)",
+    "title": "1030 盤後快訊 - 台股震盪洗盤，個股關鍵轉折與籌碼追蹤",
+    "url": "https://docs.google.com/document/d/13GqOpNwY3p51QzbpfmyvBEAc0dNuVeUY7cRVlu0U42A/edit?usp=sharing",
+    "summary": "分析大盤技術線型走勢、重點權值股動態、多空關鍵防守價位及進出場停損停利點解析。",
+    "tags": ["大盤解析", "關鍵價位", "進出場策略", "熱門焦點股"],
+    "is_latest": true
+  },
+  {
+    "id": "2026-10-29",
+    "date": "2026-10-29",
+    "display_date": "10/29 (四)",
+    "title": "1029 盤後快訊 - 盤勢高檔整理，中小型股輪動加劇",
+    "url": "https://docs.google.com/document/d/13GqOpNwY3p51QzbpfmyvBEAc0dNuVeUY7cRVlu0U42A/edit?usp=sharing",
+    "summary": "關注族群輪動節奏，檢視 3 個月新高新低族群變動與主力籌碼換手跡象。",
+    "tags": ["族群輪動", "波段操作", "籌碼換手"],
+    "is_latest": false
+  },
+  {
+    "id": "2026-10-28",
+    "date": "2026-10-28",
+    "display_date": "10/28 (三)",
+    "title": "1028 盤後快訊 - 關鍵支撐測底，短線反彈觀察指標",
+    "url": "https://docs.google.com/document/d/13GqOpNwY3p51QzbpfmyvBEAc0dNuVeUY7cRVlu0U42A/edit?usp=sharing",
+    "summary": "回測月季線支撐力道，短線乖離修正後的低接策略與風險控管原則。",
+    "tags": ["技術支撐", "低接策略", "風險控管"],
+    "is_latest": false
+  }
+]
