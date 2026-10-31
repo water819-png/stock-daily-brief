@@ -139,10 +139,11 @@ def fetch_market_data():
     except Exception as e:
         print(f"⚠️ 個股三大法人排行抓取異常: {e}")
 
-    # 4. 生成引導前言
-    now = datetime.now()
-    month_day_str = f"{now.month}月{now.day}日"
-    weekday_str = f"週{WEEKDAY_MAP[now.weekday()]}"
+    # 4. 生成引導前言（以實際交易日為準，防呆休市日）
+    trade_iso = tw_date_to_iso(market_overview.get("raw_tw_date", ""))
+    dt_obj = datetime.strptime(trade_iso, "%Y-%m-%d")
+    month_day_str = f"{dt_obj.month}月{dt_obj.day}日"
+    weekday_str = f"週{WEEKDAY_MAP[dt_obj.weekday()]}"
     close_idx = market_overview.get("index_close", "--")
     chg = market_overview.get("index_change", "")
     vol = market_overview.get("volume", "")
@@ -157,17 +158,26 @@ def fetch_market_data():
     market_overview["lead_paragraph"] = lead_text
     return market_overview
 
-def update_briefs_json(market_overview):
-    """將今日最新大盤與籌碼資料同步至 briefs.json"""
+def update_briefs_json(market_overview, force=False):
+    """將今日最新大盤與籌碼資料同步至 briefs.json（含休市防呆）"""
     if not DATA_PATH.exists():
         print(f"⚠️ 未找到 {DATA_PATH}")
+        return False
+
+    # 防呆機制：比對證交所返回的最新實際交易日 vs 今日系統日期
+    today_real_date = datetime.now().strftime("%Y-%m-%d")
+    trade_date = tw_date_to_iso(market_overview.get("raw_tw_date", ""))
+
+    if not force and trade_date != today_real_date:
+        print(f"\n☕ [休市防呆] 今日（{today_real_date}）台股未開盤（國定連假 / 颱風假 / 週末休市）。")
+        print(f"   證交所最新交易日仍為 [{trade_date}]，略過自動覆蓋以防誤更！")
         return False
 
     with open(DATA_PATH, "r", encoding="utf-8") as f:
         briefs = json.load(f)
 
     # 以證交所官方實際交易日為基準
-    today_date = tw_date_to_iso(market_overview.get("raw_tw_date", ""))
+    today_date = trade_date
     dt_obj = datetime.strptime(today_date, "%Y-%m-%d")
     weekday_str = WEEKDAY_MAP[dt_obj.weekday()]
     today_disp = f"{dt_obj.strftime('%m/%d')} ({weekday_str})"
@@ -215,15 +225,21 @@ def update_briefs_json(market_overview):
     return True
 
 def main():
+    import argparse
+    parser = argparse.ArgumentParser(description="台股大盤與三大法人籌碼自動更新任務")
+    parser.add_argument("--force", "-f", action="store_true", help="強制更新（略過休市防呆）")
+    args = parser.parse_args()
+
     print("========================================")
     print("🚀 啟動台股大盤與三大法人籌碼自動更新任務")
     print("========================================")
     overview = fetch_market_data()
     if overview and "index_close" in overview:
-        update_briefs_json(overview)
-        print("\n🎉 大盤行情與籌碼更新完成！")
+        success = update_briefs_json(overview, force=args.force)
+        if success:
+            print("\n🎉 大盤行情與籌碼更新完成！")
     else:
-        print("\n⚠️ 今日可能為非交易日或證交所資料尚未發布。")
+        print("\n⚠️ 今日非交易日或證交所資料尚未發布。")
 
 if __name__ == "__main__":
     main()
