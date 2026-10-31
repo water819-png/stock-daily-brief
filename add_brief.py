@@ -101,6 +101,8 @@ def add_new_brief(date, display_date, title, url, summary, tags):
             break
 
     if existing_idx is not None:
+        if "market_overview" in briefs[existing_idx] and "market_overview" not in new_item:
+            new_item["market_overview"] = briefs[existing_idx]["market_overview"]
         briefs[existing_idx] = new_item
         print(f"🔄 已覆蓋更新 {date} 的快訊紀錄！")
     else:
