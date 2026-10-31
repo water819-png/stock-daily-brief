@@ -73,6 +73,24 @@ function renderHeroCard(item) {
   document.getElementById('btnCopyDocLink').onclick = () => {
     copyToClipboard(item.url, `已複製「${item.display_date} 盤後快訊」的 Google Doc 連結！`);
   };
+
+  // 手機版底部快捷操作列綁定
+  const mBtnOpen = document.getElementById('mBtnOpenDoc');
+  if (mBtnOpen) mBtnOpen.href = item.url;
+
+  const mBtnPreview = document.getElementById('mBtnPreviewDoc');
+  if (mBtnPreview) {
+    mBtnPreview.onclick = () => {
+      openPreviewModal(item.title, item.url);
+    };
+  }
+
+  const mBtnShare = document.getElementById('mBtnShare');
+  if (mBtnShare) {
+    mBtnShare.onclick = () => {
+      shareBrief(item);
+    };
+  }
 }
 
 // 渲染大盤行情與籌碼 TOP10 面板
@@ -416,9 +434,27 @@ function copyToClipboard(text, successMsg = '已複製連結到剪貼簿！') {
   }
 }
 
+// 智能分享函式（手機優先呼叫原生分享面版，桌機複製連結）
+function shareBrief(item) {
+  const targetItem = item || latestBrief;
+  const shareTitle = targetItem ? targetItem.title : '每日台股盤後快訊';
+  const shareText = `【${targetItem ? targetItem.display_date : '今日'} 盤後快訊】台股大盤、三大法人買賣超與個股關鍵價分析：`;
+  const shareUrl = window.location.href;
+
+  if (navigator.share) {
+    navigator.share({
+      title: shareTitle,
+      text: shareText,
+      url: shareUrl
+    }).catch(() => {});
+  } else {
+    copyToClipboard(shareUrl, '已複製網站連結！可直接貼在 LINE 分享給好友');
+  }
+}
+
 // 站點分享按鈕
 document.getElementById('btnCopySiteUrl').onclick = () => {
-  copyToClipboard(window.location.href, '已複製「每日台股盤後快訊」網站連結！可直接貼在 LINE 分享給朋友');
+  shareBrief(latestBrief);
 };
 
 // Toast 提示框

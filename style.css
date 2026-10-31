@@ -937,33 +937,177 @@ button, a {
   opacity: 1;
 }
 
-/* 行動版 RWD 調整 */
+/* 手機底部吸頂操作列（電腦版預設隱藏） */
+.mobile-bottom-bar {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+  background: rgba(11, 15, 25, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 10px 16px;
+  padding-bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.mobile-bottom-inner {
+  max-width: 500px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.m-btn-primary {
+  flex: 1;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: linear-gradient(135deg, var(--accent-red) 0%, #e11d48 100%);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 14px;
+  border-radius: var(--radius-full);
+  box-shadow: 0 4px 16px var(--accent-red-glow);
+  text-decoration: none;
+}
+
+.m-btn-primary:active {
+  transform: scale(0.98);
+}
+
+.m-btn-secondary {
+  height: 46px;
+  padding: 0 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+}
+
+.m-btn-secondary i {
+  font-size: 15px;
+}
+
+.m-btn-secondary:active {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+/* 行動版 RWD 調整（手機專屬優化） */
 @media (max-width: 768px) {
+  body {
+    padding-bottom: calc(75px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .mobile-bottom-bar {
+    display: block;
+  }
+
+  .main-content {
+    padding: 16px 14px 40px;
+    gap: 20px;
+  }
+
+  .navbar {
+    padding: 0;
+  }
+
+  .nav-container {
+    padding: 12px 14px;
+  }
+
+  .brand-title {
+    font-size: 16px;
+  }
+
   .hero-card {
-    padding: 24px 20px;
+    padding: 20px 16px;
+    border-radius: var(--radius-md);
   }
 
   .hero-title {
-    font-size: 22px;
+    font-size: 20px;
+    line-height: 1.4;
   }
 
   .hero-desc {
+    font-size: 13px;
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+
+  .market-overview-wrapper {
+    padding: 14px;
+    gap: 14px;
+  }
+
+  .market-lead-box {
+    font-size: 13px;
+    padding: 10px 12px;
+  }
+
+  /* 手機端三大法人 2x2 網格 */
+  .inst-cards-row {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .inst-pill {
+    padding: 8px 10px;
+  }
+
+  .inst-val {
     font-size: 14px;
+  }
+
+  .market-stats-row {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .m-stat-pill {
+    padding: 8px 10px;
+  }
+
+  .m-stat-number {
+    font-size: 15px;
   }
 
   .hero-cta-group {
     flex-direction: column;
     align-items: stretch;
+    gap: 10px;
   }
 
   .hero-cta-group .btn-primary,
   .hero-cta-group .btn-glass,
   .hero-cta-group .btn-secondary {
     width: 100%;
+    padding: 12px 16px;
+    font-size: 14px;
   }
 
   .stats-bar {
     grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .stat-card {
+    padding: 12px 16px;
   }
 
   .search-input-wrapper {
@@ -972,9 +1116,32 @@ button, a {
 
   .archive-grid {
     grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .archive-card {
+    padding: 18px 16px;
+  }
+
+  .card-title {
+    font-size: 16px;
   }
 
   .top10-ranking-grid {
     grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  /* 手機預覽抽屜全螢幕感 */
+  .modal-container {
+    height: 94vh;
+    max-height: 94vh;
+    border-radius: var(--radius-md) var(--radius-md) 0 0;
+    margin-top: auto;
+  }
+
+  .modal-overlay {
+    padding: 0;
+    align-items: flex-end;
   }
 }
