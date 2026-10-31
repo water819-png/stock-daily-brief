@@ -2,11 +2,12 @@
 # -*- coding: utf-8 -*-
 """
 add_brief.py - 每日盤後快訊快速發布工具
-執行此腳本，只需貼上 Google Doc 連結與標題，自動更新 data/briefs.json！
+執行此腳本，只需貼上 Google Doc 連結與標題，可選擇性貼上 Gemini 產出的每日籌碼摘要，自動更新 data/briefs.json！
 """
 
 import sys
 import json
+import re
 import argparse
 from datetime import datetime
 from pathlib import Path
@@ -36,12 +37,79 @@ def save_briefs(data):
         json.dump(data, f, ensure_ascii=False, indent=2)
     print(f"\n✅ 成功寫入：{DATA_PATH}")
 
+def parse_gemini_text(text: str) -> dict:
+    """自動解析 Gemini 每日 18:00 產出之大盤與三大法人籌碼摘要"""
+    if not text or len(text.strip()) < 30:
+        return None
+
+    overview = {}
+    lines = [l.strip() for l in text.splitlines() if l.strip()]
+    if lines:
+        overview["lead_paragraph"] = lines[0]
+
+    close_m = re.search(r'收在\s*([\d,]+\.?\d*)\s*點', text)
+    if close_m:
+        overview["index_close"] = close_m.group(1)
+
+    change_m = re.search(r'(大跌|下跌|大漲|上漲)\s*([\d,]+\.?\d*)\s*點.*?([（(][^）)]+[）)])', text)
+    if change_m:
+        overview["index_change"] = f"{change_m.group(1)} {change_m.group(2)} {change_m.group(3)}"
+
+    vol_m = re.search(r'成交量.*?([\d,]+\.?\d*)\s*億', text)
+    if vol_m:
+        overview["volume"] = f"{vol_m.group(1)} 億"
+
+    month_m = re.search(r'([^；。\n]*全月累計[^；。\n]*)', text)
+    if month_m:
+        overview["monthly_change"] = month_m.group(1).strip()
+
+    institutions = {}
+    f_m = re.search(r'外資及陸資[：:]\s*(?:狂賣|賣超|買超|狂買)?\s*([\d,]+\.?\d*)\s*億', text)
+    if f_m:
+        sign = "-" if any(k in text[max(0, f_m.start()-10):f_m.end()] for k in ["賣", "砍"]) else "+"
+        institutions["foreign"] = f"{sign}{f_m.group(1)} 億"
+
+    t_m = re.search(r'投信[：:]\s*(?:買超|賣超)?\s*([\d,]+\.?\d*)\s*億', text)
+    if t_m:
+        sign = "+" if "買" in text[max(0, t_m.start()-5):t_m.end()] else "-"
+        institutions["investment_trust"] = f"{sign}{t_m.group(1)} 億"
+
+    d_m = re.search(r'自營商[：:]\s*.*?([\d,]+\.?\d*)\s*億', text)
+    if d_m:
+        institutions["dealer"] = f"-{d_m.group(1)} 億"
+
+    tot_m = re.search(r'三大法人合計.*?[：:]\s*.*?([\d,]+\.?\d*)\s*億', text)
+    if tot_m:
+        institutions["total"] = f"-{tot_m.group(1)} 億"
+
+    futures_m = re.search(r'（[^）]*未平倉淨空單[^）]*）', text)
+    if futures_m:
+        institutions["foreign_futures"] = futures_m.group(0).strip("（）")
+
+    overview["institutions"] = institutions
+
+    # TOP 10 股票解析
+    for sec_key, prefix in [("foreign", "外資買賣超前十大個股"), ("trust", "投信買賣超前十大個股")]:
+        pos = text.find(prefix)
+        if pos != -1:
+            part = text[pos:pos+500]
+            b_m = re.search(r'買超前十大[：:]\s*([^\n。]+)', part)
+            s_m = re.search(r'賣超前十大[：:]\s*([^\n。]+)', part)
+            if b_m:
+                clean_b = re.sub(r'[\(（].*?[\)）]', '', b_m.group(1))
+                overview[f"{sec_key}_top_buy"] = [s.strip() for s in clean_b.replace('、', ',').split(',') if s.strip()][:10]
+            if s_m:
+                clean_s = re.sub(r'[\(（].*?[\)）]', '', s_m.group(1))
+                overview[f"{sec_key}_top_sell"] = [s.strip() for s in clean_s.replace('、', ',').split(',') if s.strip()][:10]
+
+    return overview
+
 def interactive_mode():
     now = datetime.now()
     default_date = now.strftime("%Y-%m-%d")
     weekday_str = WEEKDAY_MAP[now.weekday()]
     default_display = f"{now.strftime('%m/%d')} ({weekday_str})"
-    default_title = f"{now.strftime('%m%d')} 盤後快訊 - 台股大盤關鍵轉折與焦點股分析"
+    default_title = f"{now.strftime('%m%d')} 盤後快訊 - VIP 版"
 
     print("========================================")
     print("📰 發布今日盤後快訊小工具")
@@ -56,15 +124,29 @@ def interactive_mode():
     if not title:
         title = default_title
 
-    summary = input("\n3. 請輸入重點摘要（選填，直接按 Enter 採用通用摘要）：\n👉 ").strip()
-    if not summary:
-        summary = "大盤技術線走勢觀察、權值股動態、多空關鍵防守價位及熱門焦點股策略。"
+    print("\n3. （選填）是否有 Gemini 18:00 產出之文字摘要？")
+    print("   直接貼上整篇文字（完成後在空行輸入 END 或直接按 Enter 略過）：")
+    gemini_lines = []
+    while True:
+        line = input()
+        if line.strip().upper() == "END" or (not line and not gemini_lines):
+            break
+        if not line and gemini_lines:
+            break
+        gemini_lines.append(line)
 
-    tags_input = input("\n4. 請輸入標籤（逗號分隔，例如: 大盤解析,關鍵價位,進出場策略）：\n👉 ").strip()
-    if tags_input:
-        tags = [t.strip() for t in tags_input.replace("，", ",").split(",") if t.strip()]
+    gemini_raw = "\n".join(gemini_lines).strip()
+    market_overview = parse_gemini_text(gemini_raw) if gemini_raw else None
+
+    if market_overview:
+        print("✨ 成功自動解析 Gemini 大盤數據與三大法人 TOP10！")
+        summary = market_overview.get("lead_paragraph", "每日大盤分析與關鍵價位。")[:120] + "..."
     else:
-        tags = ["大盤解析", "關鍵價位", "進出場策略", "焦點股"]
+        summary = input("\n4. 請輸入重點摘要（選填，直接按 Enter 採用預設）：\n👉 ").strip()
+        if not summary:
+            summary = "大盤技術線走勢觀察、權值股動態、多空關鍵防守價位及熱門焦點股策略。"
+
+    tags = ["VIP專屬", "大盤解析", "關鍵價位", "三大法人籌碼"]
 
     add_new_brief(
         date=default_date,
@@ -72,13 +154,13 @@ def interactive_mode():
         title=title,
         url=url,
         summary=summary,
-        tags=tags
+        tags=tags,
+        market_overview=market_overview
     )
 
-def add_new_brief(date, display_date, title, url, summary, tags):
+def add_new_brief(date, display_date, title, url, summary, tags, market_overview=None):
     briefs = load_briefs()
 
-    # 先將其他舊項目取消 is_latest
     for b in briefs:
         b["is_latest"] = False
 
@@ -93,7 +175,9 @@ def add_new_brief(date, display_date, title, url, summary, tags):
         "is_latest": True
     }
 
-    # 檢查是否已存在同日項目，存在則更新，不存在則插入最前面
+    if market_overview:
+        new_item["market_overview"] = market_overview
+
     existing_idx = None
     for idx, b in enumerate(briefs):
         if b.get("date") == date or b.get("id") == date:
@@ -127,9 +211,9 @@ if __name__ == "__main__":
         date_str = now.strftime("%Y-%m-%d")
         weekday_str = WEEKDAY_MAP[now.weekday()]
         disp_str = f"{now.strftime('%m/%d')} ({weekday_str})"
-        title_str = args.title or f"{now.strftime('%m%d')} 盤後快訊"
+        title_str = args.title or f"{now.strftime('%m%d')} 盤後快訊 - VIP 版"
         summary_str = args.summary or "每日台股關鍵價位與進出場策略分析。"
-        tag_list = [t.strip() for t in args.tags.split(",") if t.strip()] if args.tags else ["大盤解析", "關鍵價位"]
+        tag_list = [t.strip() for t in args.tags.split(",") if t.strip()] if args.tags else ["VIP專屬", "大盤解析"]
         add_new_brief(date_str, disp_str, title_str, args.url, summary_str, tag_list)
     else:
         interactive_mode()
