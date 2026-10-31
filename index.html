@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>📈 每日台股盤後快訊 | 專屬分析與個股關鍵價</title>
-  <meta name="description" content="每日盤後台股大盤解析、重點焦點股、技術面關鍵價位與進出場策略快訊專屬入口站。" />
+  <meta name="description" content="每日盤後台股大盤解析、三大法人籌碼動向、外資投信買賣超 TOP10、重點焦點股、技術面關鍵價位與進出場策略快訊專屬入口站。" />
   
   <!-- Favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220%22%200%22%20100%22%20100%22><text y=%22.9em%22 font-size=%2290%22>📈</text></svg>" />
@@ -12,7 +12,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet" />
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
@@ -31,7 +31,7 @@
         <span class="logo-icon">📈</span>
         <div class="logo-text">
           <span class="brand-title">每日台股盤後快訊</span>
-          <span class="brand-sub">Daily Market Brief & Key Levels</span>
+          <span class="brand-sub">Daily Market Brief & Institutional Flows</span>
         </div>
       </div>
       <div class="nav-actions">
@@ -62,8 +62,8 @@
       <div class="stat-card">
         <div class="stat-icon green"><i class="fa-solid fa-clock-rotate-left"></i></div>
         <div class="stat-info">
-          <div class="stat-label">最後更新日期</div>
-          <div class="stat-value" id="latestUpdateDate">載入中...</div>
+          <div class="stat-label">已發布期數</div>
+          <div class="stat-value" id="totalBriefsCount">--</div>
         </div>
       </div>
     </section>
@@ -71,16 +71,27 @@
     <!-- 今日最新快照英雄卡片 (Hero Card) -->
     <section class="hero-section">
       <div class="hero-card" id="latestCard">
-        <div class="hero-badge">
-          <span class="pulse-dot"></span>
-          <span>🔥 今日最新盤後快訊</span>
-          <span class="hero-date" id="heroDate">--/--</span>
+        <div class="hero-header-line">
+          <div class="hero-badge">
+            <span class="pulse-dot"></span>
+            <span>🔥 今日最新盤後快訊</span>
+            <span class="hero-date" id="heroDate">--/--</span>
+          </div>
+          <div class="hero-vip-tag">
+            <i class="fa-solid fa-crown"></i> VIP 專屬深度報告
+          </div>
         </div>
 
         <h1 class="hero-title" id="heroTitle">正在載入最新盤後快訊...</h1>
+        
         <p class="hero-desc" id="heroDesc">
           每日下午 15:45～16:30 提供最新台股盤後分析、關鍵價位、進出場策略與焦點股追蹤。
         </p>
+
+        <!-- 專屬模組：大盤焦點與三大法人籌碼速覽看板 -->
+        <div id="marketOverviewContainer" class="market-overview-wrapper" style="display: none;">
+          <!-- 動態注入大盤數據與法人 TOP10 -->
+        </div>
 
         <div class="hero-tags" id="heroTags">
           <!-- 標籤動態注入 -->
@@ -89,7 +100,7 @@
         <div class="hero-cta-group">
           <a id="btnOpenDoc" href="#" target="_blank" class="btn-primary btn-lg">
             <i class="fa-solid fa-arrow-up-right-from-square"></i>
-            <span>立即開啟 Google Doc 完整閱讀</span>
+            <span>立即開啟 Google Doc 完整閱讀 (含個股關鍵價)</span>
           </a>
           <button id="btnPreviewDoc" class="btn-glass btn-lg">
             <i class="fa-solid fa-eye"></i>
@@ -107,13 +118,13 @@
     <section class="archive-section">
       <div class="section-header">
         <div class="header-left">
-          <h2><i class="fa-solid fa-folder-open"></i> 歷史快訊總覽與回顧</h2>
-          <p class="section-caption">想回顧前幾天的分析？在下方點選即可隨時調閱歷史文件。</p>
+          <h2><i class="fa-solid fa-folder-open"></i> 10月份歷史快訊總覽與回顧</h2>
+          <p class="section-caption">想回顧過去幾天的分析？在下方點選即可隨時調閱當日完整 VIP 文件。</p>
         </div>
         <div class="header-search">
           <div class="search-input-wrapper">
             <i class="fa-solid fa-magnifying-glass search-icon"></i>
-            <input type="text" id="searchInput" placeholder="搜尋日期、焦點股或關鍵字..." />
+            <input type="text" id="searchInput" placeholder="搜尋日期（如 1028）、VIP、焦點股..." />
             <button id="btnClearSearch" class="btn-clear" style="display: none;">
               <i class="fa-solid fa-xmark"></i>
             </button>
@@ -136,7 +147,7 @@
         <span>免責聲明：本站所有內容僅供個人研究筆記與朋友交流分享，不代表任何投資買賣建議。投資必定有風險，請獨立思考並自負盈虧。</span>
       </div>
       <div class="footer-copyright">
-        © 2026 台股每日盤後快訊分享站 ｜ Built with care for investors
+        © 2026 台股每日盤後快訊分享站 ｜ Built for intelligent investors
       </div>
     </div>
   </footer>
