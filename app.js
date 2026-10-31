@@ -185,9 +185,14 @@ function renderMarketOverview(container, m) {
   `;
 }
 
+let isArchiveExpanded = false;
+
 // 渲染歷史歸檔列表
-function renderArchiveGrid(list) {
+function renderArchiveGrid(list, isSearchResult = false) {
   const grid = document.getElementById('archiveGrid');
+  const toggleWrap = document.getElementById('archiveToggleWrap');
+  const toggleText = document.getElementById('toggleArchiveText');
+  const toggleIcon = document.getElementById('toggleArchiveIcon');
   grid.innerHTML = '';
 
   if (!list || list.length === 0) {
@@ -198,10 +203,33 @@ function renderArchiveGrid(list) {
         <p>請嘗試更換搜尋關鍵字或清除搜尋框</p>
       </div>
     `;
+    if (toggleWrap) toggleWrap.style.display = 'none';
     return;
   }
 
-  list.forEach(item => {
+  // 決定顯示範圍：搜尋結果直接全部展示；主列表預設只顯示前 3 篇
+  let displayList = list;
+  const DEFAULT_LIMIT = 3;
+
+  if (!isSearchResult && list.length > DEFAULT_LIMIT) {
+    if (toggleWrap) {
+      toggleWrap.style.display = 'flex';
+      const remaining = list.length - DEFAULT_LIMIT;
+      if (!isArchiveExpanded) {
+        displayList = list.slice(0, DEFAULT_LIMIT);
+        toggleText.textContent = `展開更多歷史快訊 (尚有 ${remaining} 篇)`;
+        toggleIcon.className = 'fa-solid fa-chevron-down';
+      } else {
+        displayList = list;
+        toggleText.textContent = '收合歷史快訊';
+        toggleIcon.className = 'fa-solid fa-chevron-up';
+      }
+    }
+  } else {
+    if (toggleWrap) toggleWrap.style.display = 'none';
+  }
+
+  displayList.forEach(item => {
     const isLatest = item.id === (latestBrief ? latestBrief.id : '');
     const card = document.createElement('div');
     card.className = 'archive-card';
@@ -246,6 +274,18 @@ function renderArchiveGrid(list) {
   });
 }
 
+// 綁定展開/收合按鈕
+const btnToggleArchive = document.getElementById('btnToggleArchive');
+if (btnToggleArchive) {
+  btnToggleArchive.onclick = () => {
+    isArchiveExpanded = !isArchiveExpanded;
+    renderArchiveGrid(allBriefs, false);
+    if (!isArchiveExpanded) {
+      document.querySelector('.archive-section').scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+}
+
 // 統計資訊更新
 function updateStatsHeader() {
   document.getElementById('totalBriefsCount').textContent = `${allBriefs.length} 篇 VIP 快訊`;
@@ -287,7 +327,7 @@ searchInput.addEventListener('input', (e) => {
   btnClearSearch.style.display = kw ? 'block' : 'none';
 
   if (!kw) {
-    renderArchiveGrid(allBriefs);
+    renderArchiveGrid(allBriefs, false);
     return;
   }
 
@@ -300,13 +340,13 @@ searchInput.addEventListener('input', (e) => {
     return inTitle || inDesc || inDate || inDisp || inTags;
   });
 
-  renderArchiveGrid(filtered);
+  renderArchiveGrid(filtered, true);
 });
 
 btnClearSearch.addEventListener('click', () => {
   searchInput.value = '';
   btnClearSearch.style.display = 'none';
-  renderArchiveGrid(allBriefs);
+  renderArchiveGrid(allBriefs, false);
 });
 
 // Google Doc 站內預覽 Modal 控制

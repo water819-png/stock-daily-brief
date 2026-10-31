@@ -731,6 +731,41 @@ button, a {
   margin-bottom: 12px;
 }
 
+/* 歷史快訊展開/收合控制按鈕 */
+.archive-toggle-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.btn-toggle-archive {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 28px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: var(--radius-full);
+  backdrop-filter: blur(8px);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-toggle-archive:hover {
+  background: rgba(244, 63, 94, 0.15);
+  border-color: rgba(244, 63, 94, 0.4);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.btn-toggle-archive i {
+  transition: transform 0.25s ease;
+}
+
 /* 預覽模態框 (Modal) */
 .modal-overlay {
   position: fixed;
