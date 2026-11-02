@@ -468,4 +468,173 @@ function showToast(msg) {
 }
 
 // 網頁啟動
-document.addEventListener('DOMContentLoaded', loadBriefs);
+
+// ========================================================
+// 📅 重大行事曆與頁面分頁切換邏輯 (Calendar & Nav Logic)
+// ========================================================
+
+let calendarData = null;
+
+function switchView(viewName) {
+  const briefsView = document.getElementById('briefsView');
+  const calendarView = document.getElementById('calendarView');
+  const navTabBriefs = document.getElementById('navTabBriefs');
+  const navTabCalendar = document.getElementById('navTabCalendar');
+  const mTabBriefs = document.getElementById('mTabBriefs');
+  const mTabCalendar = document.getElementById('mTabCalendar');
+
+  if (viewName === 'calendar') {
+    if (briefsView) briefsView.style.display = 'none';
+    if (calendarView) calendarView.style.display = 'flex';
+
+    if (navTabBriefs) navTabBriefs.classList.remove('active');
+    if (navTabCalendar) navTabCalendar.classList.add('active');
+    if (mTabBriefs) mTabBriefs.classList.remove('active');
+    if (mTabCalendar) mTabCalendar.classList.add('active');
+
+    window.location.hash = '#calendar';
+    loadCalendar();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  } else {
+    if (briefsView) briefsView.style.display = 'flex';
+    if (calendarView) calendarView.style.display = 'none';
+
+    if (navTabBriefs) navTabBriefs.classList.add('active');
+    if (navTabCalendar) navTabCalendar.classList.remove('active');
+    if (mTabBriefs) mTabBriefs.classList.add('active');
+    if (mTabCalendar) mTabCalendar.classList.remove('active');
+
+    window.location.hash = '#briefs';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+}
+
+async function loadCalendar() {
+  if (calendarData) {
+    renderCalendarView(calendarData);
+    return;
+  }
+  try {
+    const res = await fetch('data/calendar.json?v=' + Date.now());
+    if (res.ok) {
+      calendarData = await res.json();
+      renderCalendarView(calendarData);
+    }
+  } catch (err) {
+    console.error('載入 calendar.json 失敗:', err);
+  }
+}
+
+function renderCalendarView(data) {
+  if (!data) return;
+
+  if (data.theme_title) {
+    const tEl = document.getElementById('calThemeTitle');
+    if (tEl) tEl.textContent = data.theme_title;
+  }
+  if (data.theme_subtitle) {
+    const sEl = document.getElementById('calThemeSubtitle');
+    if (sEl) sEl.textContent = data.theme_subtitle;
+  }
+
+  // 1. 渲染三大關卡時程表
+  const stagesWrap = document.getElementById('stagesContainer');
+  if (stagesWrap && data.stages) {
+    stagesWrap.innerHTML = data.stages.map(st => `
+      <div class="stage-card">
+        <div class="stage-card-header">
+          <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+            <span class="stage-num-badge ${st.badge_color || 'purple'}">
+              <i class="fa-solid fa-flag-checkered"></i> ${st.stage_number}
+            </span>
+            <span class="stage-tag-badge">${st.badge || ''}</span>
+          </div>
+          <span class="stage-date-text">
+            <i class="fa-regular fa-calendar"></i> ${st.date_range}
+          </span>
+        </div>
+
+        <h3 class="stage-main-title">${st.title}</h3>
+
+        <div class="stage-events-list">
+          ${(st.events || []).map(ev => `
+            <div class="stage-event-pill">
+              <div class="event-header-row">
+                <span class="event-name">${ev.name}</span>
+                <span class="event-tag-pill">${ev.tag || ev.timing || ''}</span>
+              </div>
+              <div class="event-time-badge">
+                <i class="fa-solid fa-bell"></i> ${ev.tw_time}
+              </div>
+            </div>
+          `).join('')}
+        </div>
+
+        <div class="tactical-box">
+          <div class="tactical-icon"><i class="fa-solid fa-crosshairs"></i></div>
+          <div class="tactical-content">
+            <span class="tactical-label">戰術觀察：</span>
+            ${st.tactical_observation}
+          </div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  // 2. 渲染六大宏觀經濟變數
+  const macroWrap = document.getElementById('macroPillarsContainer');
+  if (macroWrap && data.macro_pillars) {
+    macroWrap.innerHTML = data.macro_pillars.map(p => `
+      <div class="macro-card">
+        <div class="macro-icon-box ${p.color || 'blue'}">
+          <i class="fa-solid ${p.icon || 'fa-chart-pie'}"></i>
+        </div>
+        <div class="macro-info">
+          <h3>${p.title}</h3>
+          <p>${p.desc}</p>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  // 3. 渲染對台股傳導效應專題
+  const twWrap = document.getElementById('taiwanImpactSection');
+  if (twWrap && data.taiwan_market_impact) {
+    const imp = data.taiwan_market_impact;
+    twWrap.innerHTML = `
+      <div class="taiwan-impact-card">
+        <div class="taiwan-impact-header">
+          <i class="fa-solid fa-network-wired"></i>
+          <span>${imp.title}</span>
+        </div>
+        <ul class="taiwan-impact-list">
+          ${(imp.points || []).map(pt => `<li>${pt}</li>`).join('')}
+        </ul>
+      </div>
+    `;
+  }
+}
+
+function initNavigation() {
+  const navTabBriefs = document.getElementById('navTabBriefs');
+  const navTabCalendar = document.getElementById('navTabCalendar');
+  const mTabBriefs = document.getElementById('mTabBriefs');
+  const mTabCalendar = document.getElementById('mTabCalendar');
+
+  if (navTabBriefs) navTabBriefs.addEventListener('click', () => switchView('briefs'));
+  if (navTabCalendar) navTabCalendar.addEventListener('click', () => switchView('calendar'));
+  if (mTabBriefs) mTabBriefs.addEventListener('click', () => switchView('briefs'));
+  if (mTabCalendar) mTabCalendar.addEventListener('click', () => switchView('calendar'));
+
+  // 檢查網址列 hash
+  if (window.location.hash === '#calendar') {
+    switchView('calendar');
+  }
+}
+
+// 網頁啟動
+document.addEventListener('DOMContentLoaded', () => {
+  loadBriefs();
+  initNavigation();
+});
+

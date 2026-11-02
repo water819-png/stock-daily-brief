@@ -34,6 +34,19 @@
           <span class="brand-sub">Daily Market Brief & Institutional Flows</span>
         </div>
       </div>
+      <!-- 頂部頁面切換分頁 -->
+      <nav class="nav-tabs" aria-label="主要頁面切換">
+        <button id="navTabBriefs" class="nav-tab-btn active" type="button">
+          <i class="fa-solid fa-newspaper"></i>
+          <span>每日盤後快訊</span>
+        </button>
+        <button id="navTabCalendar" class="nav-tab-btn" type="button">
+          <i class="fa-solid fa-calendar-days"></i>
+          <span>重大行事曆</span>
+          <span class="nav-tab-badge">本週重裝</span>
+        </button>
+      </nav>
+
       <div class="nav-actions">
         <button id="btnCopySiteUrl" class="btn-secondary btn-sm" title="複製此網站連結傳給朋友">
           <i class="fa-solid fa-share-nodes"></i> 分享此站
@@ -43,8 +56,10 @@
   </header>
 
   <main class="main-content">
-    <!-- 統計計數器小看板 -->
-    <section class="stats-bar">
+    <!-- 視圖一：每日盤後快訊 (Briefs View) -->
+    <div id="briefsView" class="page-view active">
+      <!-- 統計計數器小看板 -->
+      <section class="stats-bar">
       <div class="stat-card">
         <div class="stat-icon red"><i class="fa-solid fa-fire-flame-curved"></i></div>
         <div class="stat-info">
@@ -145,6 +160,61 @@
         </button>
       </div>
     </section>
+    </div>
+
+    <!-- 視圖二：重大行事曆與時程戰略 (Calendar View) -->
+    <div id="calendarView" class="page-view" style="display: none;">
+      <!-- 重大行事曆主橫幅 -->
+      <section class="calendar-hero">
+        <div class="cal-hero-badge">
+          <span class="pulse-dot-gold"></span>
+          <span>📅 全球宏觀與超級財報週</span>
+        </div>
+        <h1 class="cal-hero-title" id="calThemeTitle">近期重裝時程表：美國期中大選與非農核爆週</h1>
+        <p class="cal-hero-desc" id="calThemeSubtitle">聚焦美科技巨擘財報檢驗、白宮與國會權力重組、非農就業定音三大核心戰役</p>
+
+        <!-- 冬令時間提醒小黃框 -->
+        <div class="winter-alert-box" id="calWinterAlert">
+          <div class="winter-alert-icon"><i class="fa-solid fa-clock-rotate-left"></i></div>
+          <div class="winter-alert-text">
+            <strong>冬令時間啟動提醒：</strong>美國自 11 月 1 日起進入冬令時間，美股開盤時間延後至台灣時間 <strong>22:30 ~ 05:00</strong>。
+          </div>
+        </div>
+      </section>
+
+      <!-- 三大關卡時程卡片容器 -->
+      <section class="stages-section">
+        <div class="section-title-line">
+          <div class="title-with-pill">
+            <span class="section-pill">STAGE TIMELINE</span>
+            <h2>三大攻防關鍵關卡時程表</h2>
+          </div>
+          <span class="cal-tz-note"><i class="fa-solid fa-earth-asia"></i> 標註時間皆已自動換算為台灣時間 (UTC+8)</span>
+        </div>
+        <div class="stages-grid" id="stagesContainer">
+          <!-- 由 JS 動態注入關卡卡片 -->
+        </div>
+      </section>
+
+      <!-- 左右市場走勢的六大經濟變數深度觀察 (圖卡精華) -->
+      <section class="macro-pillars-section">
+        <div class="section-title-line">
+          <div class="title-with-pill">
+            <span class="section-pill red">CORE MACRO</span>
+            <h2>美國期中大選登場：左右市場走勢的六大經濟變數</h2>
+          </div>
+          <p class="section-caption-sub">紐約時報專欄剖析：金融市場在乎的不是誰輸誰贏，真正左右市場行情的是利率、通膨、AI、關稅、伊朗戰爭與油價！</p>
+        </div>
+        <div class="macro-grid" id="macroPillarsContainer">
+          <!-- 由 JS 動態注入 6 大變數卡片 -->
+        </div>
+      </section>
+
+      <!-- 對台灣股市實質傳導效應專題 -->
+      <section class="taiwan-impact-section" id="taiwanImpactSection">
+        <!-- 由 JS 動態注入 -->
+      </section>
+    </div>
   </main>
 
   <!-- 頁面底部 -->
@@ -193,14 +263,18 @@
   <!-- 手機專屬底部吸附操作列 (Mobile Sticky Action Bar) -->
   <aside class="mobile-bottom-bar" id="mobileBottomBar">
     <div class="mobile-bottom-inner">
+      <button id="mTabBriefs" class="m-nav-btn active" type="button">
+        <i class="fa-solid fa-newspaper"></i>
+        <span>盤後快訊</span>
+      </button>
+      <button id="mTabCalendar" class="m-nav-btn" type="button">
+        <i class="fa-solid fa-calendar-days"></i>
+        <span>重大行事曆</span>
+      </button>
       <a id="mBtnOpenDoc" href="#" target="_blank" class="m-btn-primary">
         <i class="fa-solid fa-file-lines"></i>
-        <span>閱讀今日 VIP 報告</span>
+        <span>VIP報告</span>
       </a>
-      <button id="mBtnPreviewDoc" class="m-btn-secondary" title="站內預覽">
-        <i class="fa-solid fa-eye"></i>
-        <span>預覽</span>
-      </button>
       <button id="mBtnShare" class="m-btn-secondary" title="分享給 LINE 好友">
         <i class="fa-solid fa-share-nodes"></i>
         <span>分享</span>
