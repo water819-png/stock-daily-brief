@@ -1,13 +1,92 @@
 [
   {
+    "id": "2026-11-02",
+    "date": "2026-11-02",
+    "display_date": "11/02 (一)",
+    "title": "1102 盤後快訊 - 鴻海逆勢大漲撐盤，投信狂買 361 億力挺，連續三天留下影線",
+    "url": "https://docs.google.com/document/d/158eJHum2wqpryoXoO2AbuUne-0YBgn4PSZctJk79gMI/edit?usp=sharing",
+    "summary": "早盤受上週五美股費半重挫拖累，大盤急跌逾 800 點回測 44,400 點；隨後在鴻海大漲逾 3% 穩定軍心、聯發科抗跌及投信狂買 361 億元力挺下，跌幅收斂逾 500 點，終場下跌 291 點連續三天留長下影線。美股進入冬令時間，市場聚焦蘋果財報與美期中選舉。",
+    "tags": [
+      "大盤解析",
+      "鴻海逆勢撐盤",
+      "投信狂買361億",
+      "連三日長下影線",
+      "美期中選舉",
+      "蘋果財報"
+    ],
+    "is_latest": true,
+    "market_overview": {
+      "lead_paragraph": "今日（11月2日，週一）台股迎來 11 月首個交易日，早盤受上週五美股費半大跌 7% 與英特爾暴跌拖累，加權指數一度急跌逾 800 點回測 44,400 點；隨後在鴻海帶量大漲逾 3% 穩定軍心、聯發科抗跌以及投信狂買 361 億元力挺下，跌幅收斂逾 500 點，終場下跌 291 點，連續三天留下長下影線。美股自今晚起進入冬令時間（延後至 22:30 開盤），市場聚焦今晚蘋果財報與明日登場的美國期中選舉。",
+      "index_close": "44,920.14",
+      "index_change": "-291.69 (-0.65%)",
+      "volume": "7,895.30 億",
+      "monthly_change": "11月首個交易日探底回升，連續三天留長下影線守住 44,500 點防線",
+      "institutions": {
+        "foreign": "-735.21 億",
+        "investment_trust": "+361.17 億",
+        "dealer": "-152.88 億",
+        "total": "-526.91 億",
+        "foreign_futures": "外資狂賣 735 億呈連 3 賣，投信單日狂買 361 億創近期新高"
+      },
+      "foreign_top_buy": [
+        "群創",
+        "鴻海",
+        "華航",
+        "友達",
+        "中鋼",
+        "華新",
+        "陽明",
+        "長榮航",
+        "聯電",
+        "兆豐金"
+      ],
+      "foreign_top_sell": [
+        "力積電",
+        "台積電",
+        "台新新光金",
+        "永豐金"
+      ],
+      "trust_top_buy": [
+        "台新新光金",
+        "中信金",
+        "永豐金",
+        "元大台灣50",
+        "玉山金",
+        "日月光投控",
+        "國泰金",
+        "南亞",
+        "彰銀",
+        "台積電"
+      ],
+      "trust_top_sell": [
+        "新纖",
+        "友達",
+        "兆豐金",
+        "凱基金",
+        "禾伸堂",
+        "富采",
+        "盟立",
+        "新日興",
+        "精誠",
+        "晶豪科"
+      ]
+    }
+  },
+  {
     "id": "2026-10-30",
     "date": "2026-10-30",
     "display_date": "10/30 (五)",
     "title": "1030 盤後快訊 - 台股震盪洗盤，個股關鍵轉折與籌碼追蹤",
     "url": "https://docs.google.com/document/d/13GqOpNwY3p51QzbpfmyvBEAc0dNuVeUY7cRVlu0U42A/edit?usp=sharing",
     "summary": "受美股科技巨擘龐大資本支出導致自由現金流惡化衝擊，加權指數大跌 1,156 點摜破半年線守 45,000 大關。外資狂砍 1,124 億元創歷史第七大，投信加碼 240 億連 14 買護盤。內文含大盤技術線走勢、權值股動態、多空關鍵防守價位及進出場策略。",
-    "tags": ["大盤解析", "外資狂賣", "投信連14買", "關鍵價位", "進出場策略"],
-    "is_latest": true,
+    "tags": [
+      "大盤解析",
+      "外資狂賣",
+      "投信連14買",
+      "關鍵價位",
+      "進出場策略"
+    ],
+    "is_latest": false,
     "market_overview": {
       "lead_paragraph": "今日（10月30日，週五）台股遭遇沈重賣壓，受美股科技巨擘（Alphabet、亞馬遜、英特爾）龐大資本支出導致自由現金流惡化衝擊，加權指數開低走低，終場暴跌 1,156 點摜破半年線，尾盤多頭全力死守 45,000 點整數大關。外資單日狂砍 1,124 億元創下台股史上第七大賣超紀錄，投信則擴大加碼近 240 億元連 14 買護盤。",
       "index_close": "45,211.83",
@@ -21,10 +100,54 @@
         "total": "-1,398.44 億",
         "foreign_futures": "期貨加空 1,780 口，未平倉淨空單飆 94,241 口歷史新高"
       },
-      "foreign_top_buy": ["陽明", "台泥", "臺企銀", "中華電", "合庫金", "長榮", "寶成", "統一", "華航", "彰銀"],
-      "foreign_top_sell": ["友達", "力積電", "國巨*", "南亞", "仁寶", "台新新光金", "宏碁", "緯創", "群創", "台積電"],
-      "trust_top_buy": ["台新新光金", "中信金", "佳世達", "日月光投控", "玉山金", "第一金", "國泰金", "永豐金", "元大金", "南亞"],
-      "trust_top_sell": ["聯電", "華航", "遠東新", "台泥", "友達", "統一", "昇陽半導體", "致伸", "長興", "台達電"]
+      "foreign_top_buy": [
+        "陽明",
+        "台泥",
+        "臺企銀",
+        "中華電",
+        "合庫金",
+        "長榮",
+        "寶成",
+        "統一",
+        "華航",
+        "彰銀"
+      ],
+      "foreign_top_sell": [
+        "友達",
+        "力積電",
+        "國巨*",
+        "南亞",
+        "仁寶",
+        "台新新光金",
+        "宏碁",
+        "緯創",
+        "群創",
+        "台積電"
+      ],
+      "trust_top_buy": [
+        "台新新光金",
+        "中信金",
+        "佳世達",
+        "日月光投控",
+        "玉山金",
+        "第一金",
+        "國泰金",
+        "永豐金",
+        "元大金",
+        "南亞"
+      ],
+      "trust_top_sell": [
+        "聯電",
+        "華航",
+        "遠東新",
+        "台泥",
+        "友達",
+        "統一",
+        "昇陽半導體",
+        "致伸",
+        "長興",
+        "台達電"
+      ]
     }
   },
   {
@@ -34,7 +157,12 @@
     "title": "1029 盤後快訊 - VIP 版",
     "url": "https://docs.google.com/document/d/1D1ItPEZhiT58hOdcQZLYmbAYyQ8hYQHM054G0J0dyU8/edit?usp=sharing",
     "summary": "盤勢高檔震盪整理，檢視中小型題材股輪動節奏，關鍵支撐防守點位分析與主力動向。",
-    "tags": ["VIP專屬", "族群輪動", "關鍵防守", "中小型股"],
+    "tags": [
+      "VIP專屬",
+      "族群輪動",
+      "關鍵防守",
+      "中小型股"
+    ],
     "is_latest": false
   },
   {
@@ -44,7 +172,12 @@
     "title": "1028 盤後快訊 - VIP 版",
     "url": "https://docs.google.com/document/d/1qhSNnMV0sIK4GXd4EC-JTcfoJqrIFzOxk8UKX4c3jT4/edit?usp=sharing",
     "summary": "回測短期均線支撐力道，短線乖離修正後的低接策略與各族群多空轉折指標。",
-    "tags": ["VIP專屬", "技術支撐", "低接策略", "均線乖離"],
+    "tags": [
+      "VIP專屬",
+      "技術支撐",
+      "低接策略",
+      "均線乖離"
+    ],
     "is_latest": false
   },
   {
@@ -54,7 +187,12 @@
     "title": "1027 盤後快訊 - VIP 版",
     "url": "https://docs.google.com/document/d/1rBqF1ffkY7DgQSjutdaJ5qMXoMcv6RsMGzs-TBFAbDA/edit?usp=sharing",
     "summary": "個股走勢高度分化，檢視波段防守點位與法人主力籌碼換手跡象。",
-    "tags": ["VIP專屬", "波段操作", "籌碼換手", "個股分化"],
+    "tags": [
+      "VIP專屬",
+      "波段操作",
+      "籌碼換手",
+      "個股分化"
+    ],
     "is_latest": false
   },
   {
@@ -64,7 +202,12 @@
     "title": "1022 盤後快訊 - VIP 版",
     "url": "https://docs.google.com/document/d/1novT-CNVNkP_75x0Fh8CXkHtE7bTlfGL1vTigmxEPtw/edit?usp=sharing",
     "summary": "籌碼集中度深度檢視，強勢股突破跟進策略與出場防守停損位置定位。",
-    "tags": ["VIP專屬", "籌碼集中度", "突破策略", "停損停利"],
+    "tags": [
+      "VIP專屬",
+      "籌碼集中度",
+      "突破策略",
+      "停損停利"
+    ],
     "is_latest": false
   },
   {
@@ -74,7 +217,12 @@
     "title": "1021 盤後快訊 - VIP 版",
     "url": "https://docs.google.com/document/d/1OCNjYr1iuwriIzOkKHc0kPrtnE2T-4e636WHMFYDvhg/edit?usp=sharing",
     "summary": "權值股震盪洗盤，題材股輪動節奏觀察與多空轉折第一手分析。",
-    "tags": ["VIP專屬", "權值股", "題材輪動", "轉折分析"],
+    "tags": [
+      "VIP專屬",
+      "權值股",
+      "題材輪動",
+      "轉折分析"
+    ],
     "is_latest": false
   },
   {
@@ -84,7 +232,12 @@
     "title": "1020 盤後快訊 - VIP 版",
     "url": "https://docs.google.com/document/d/19hevp1GC_QYsy5iMlzxM-c9WGtjL5tmY-a-hxzwN1dg/edit?usp=sharing",
     "summary": "突破創高股動態追蹤，高檔爆量風險管理與關鍵防守價位確認。",
-    "tags": ["VIP專屬", "創新高股", "風險控管", "爆量分析"],
+    "tags": [
+      "VIP專屬",
+      "創新高股",
+      "風險控管",
+      "爆量分析"
+    ],
     "is_latest": false
   },
   {
@@ -94,7 +247,12 @@
     "title": "1019 盤後快訊 - VIP 版",
     "url": "https://docs.google.com/document/d/1FxEVmAWtBbMPY8Y1gwyKz3uzNa9hFK2cgHN4Snvdw2Y/edit?usp=sharing",
     "summary": "週初盤勢結構與大盤開盤關鍵防守線研判，鎖定法人加碼標的。",
-    "tags": ["VIP專屬", "週初結構", "主力加碼", "防守線定位"],
+    "tags": [
+      "VIP專屬",
+      "週初結構",
+      "主力加碼",
+      "防守線定位"
+    ],
     "is_latest": false
   },
   {
@@ -104,7 +262,12 @@
     "title": "1016 盤後快訊 - VIP 版",
     "url": "https://docs.google.com/document/d/1IYZGYk6iGk8liUEeIB0L7efQ8UnsddJCAJncYODLQcU/edit?usp=sharing",
     "summary": "週末前部位風險調整，避險策略規劃與國際市場動態重點提醒。",
-    "tags": ["VIP專屬", "週末避險", "部位管理", "國際總經"],
+    "tags": [
+      "VIP專屬",
+      "週末避險",
+      "部位管理",
+      "國際總經"
+    ],
     "is_latest": false
   },
   {
@@ -114,7 +277,12 @@
     "title": "1015 盤後快訊 - VIP 版",
     "url": "https://docs.google.com/document/d/1LEVCfEWt9epJrEAhqeSsesWtYHZ8kbmAmXhz4tPE0-w/edit?usp=sharing",
     "summary": "季線上方多方架構檢驗，強弱轉折點研判與個股進出場操作細節。",
-    "tags": ["VIP專屬", "季線結構", "多空研判", "進出場細節"],
+    "tags": [
+      "VIP專屬",
+      "季線結構",
+      "多空研判",
+      "進出場細節"
+    ],
     "is_latest": false
   },
   {
@@ -124,7 +292,12 @@
     "title": "1014 盤後快訊 - VIP 版",
     "url": "https://docs.google.com/document/d/1Nou8xshMw-X4-Shu2ED9MlPUlEOLX1D9MSnuhpHCn3M/edit?usp=sharing",
     "summary": "族群強弱勢分水嶺觀察，洗盤後的低接轉折買點評估與關鍵價位追蹤。",
-    "tags": ["VIP專屬", "強弱分水嶺", "洗盤觀察", "轉折買點"],
+    "tags": [
+      "VIP專屬",
+      "強弱分水嶺",
+      "洗盤觀察",
+      "轉折買點"
+    ],
     "is_latest": false
   },
   {
@@ -134,7 +307,12 @@
     "title": "1013 盤後快訊",
     "url": "https://docs.google.com/document/d/17XBBE094B0kYTsmCl6OUrnF3-mjDJodKPKE9zF3xwqo/edit?usp=sharing",
     "summary": "中段整理型態解析，焦點個股進出場操作邏輯與壓力支撐區間界定。",
-    "tags": ["大盤整理", "型態解析", "壓力支撐", "焦點個股"],
+    "tags": [
+      "大盤整理",
+      "型態解析",
+      "壓力支撐",
+      "焦點個股"
+    ],
     "is_latest": false
   },
   {
@@ -144,7 +322,12 @@
     "title": "1012 盤後快訊 - VIP 版",
     "url": "https://docs.google.com/document/d/1_4LVTx_rabgVK3t2y8Vy5NRrkg28rqg4JK0U4Bi5rnQ/edit?usp=sharing",
     "summary": "國慶假期後行情定錨，籌碼歸屬分析與本週焦點強勢族群巡檢。",
-    "tags": ["VIP專屬", "連假後定錨", "籌碼歸屬", "強勢族群"],
+    "tags": [
+      "VIP專屬",
+      "連假後定錨",
+      "籌碼歸屬",
+      "強勢族群"
+    ],
     "is_latest": false
   },
   {
@@ -154,7 +337,12 @@
     "title": "1008 盤後快訊 - VIP 版",
     "url": "https://docs.google.com/document/d/18NMyhOLZhzltss6gUQYLJlVV-Y3DoqKLyM9W7N5rSxs/edit?usp=sharing",
     "summary": "連假前結算效應分析，嚴格落實停損停利機制與高檔減碼策略。",
-    "tags": ["VIP專屬", "結算效應", "減碼策略", "風控落實"],
+    "tags": [
+      "VIP專屬",
+      "結算效應",
+      "減碼策略",
+      "風控落實"
+    ],
     "is_latest": false
   },
   {
@@ -164,7 +352,12 @@
     "title": "1007 盤後快訊 - VIP 版",
     "url": "https://docs.google.com/document/d/19ugD9UdE9SJZdkfRPTUXahnJqBX5P-qE2SY-r9cylHQ/edit?usp=sharing",
     "summary": "月線攻防戰關鍵焦點，三大法人買超熱區與主力布局動向追蹤。",
-    "tags": ["VIP專屬", "月線攻防", "法人買超熱區", "主力布局"],
+    "tags": [
+      "VIP專屬",
+      "月線攻防",
+      "法人買超熱區",
+      "主力布局"
+    ],
     "is_latest": false
   },
   {
@@ -174,7 +367,12 @@
     "title": "1006 盤後快訊 - VIP 版",
     "url": "https://docs.google.com/document/d/18Rx5ikaKyK0Vlqkc1o7Id-on8thKIHWO3YtHkIXwIuE/edit?usp=sharing",
     "summary": "趨勢轉折關鍵指標解讀，波段持股體檢與籌碼鬆動警訊標的提示。",
-    "tags": ["VIP專屬", "持股體檢", "趨勢轉折", "籌碼警訊"],
+    "tags": [
+      "VIP專屬",
+      "持股體檢",
+      "趨勢轉折",
+      "籌碼警訊"
+    ],
     "is_latest": false
   },
   {
@@ -184,7 +382,12 @@
     "title": "1005 盤後快訊 - VIP 版",
     "url": "https://docs.google.com/document/d/1cm8hIbekuDSGyTQbacNRxqL3X_jFoEiJfy-fnqSFXh0/edit?usp=sharing",
     "summary": "10 月初盤勢佈局重點，多空防守關鍵價位劃分與第 4 季潛力主線選股。",
-    "tags": ["VIP專屬", "Q4展望", "多空防守", "潛力主線"],
+    "tags": [
+      "VIP專屬",
+      "Q4展望",
+      "多空防守",
+      "潛力主線"
+    ],
     "is_latest": false
   },
   {
@@ -194,7 +397,12 @@
     "title": "1002 盤後快訊 - VIP 版",
     "url": "https://docs.google.com/document/d/1K5diIPc4NnvlT-7KAyIjZHv8m93WcxF-l_-E1Jug0xs/edit?usp=sharing",
     "summary": "9 月營收公布前瞻，主流領漲族群切入點與量價配合型態剖析。",
-    "tags": ["VIP專屬", "營收前瞻", "主流領漲", "量價剖析"],
+    "tags": [
+      "VIP專屬",
+      "營收前瞻",
+      "主流領漲",
+      "量價剖析"
+    ],
     "is_latest": false
   },
   {
@@ -204,7 +412,12 @@
     "title": "1001 盤後快訊 - VIP 版",
     "url": "https://docs.google.com/document/d/1LDN2BcAVph4FddxzwhrmGg-ChEfwScNAdWTGQGn9olw/edit?usp=sharing",
     "summary": "雙十季初行情全面展望，法人籌碼先行指標分析與個股關鍵價位標註。",
-    "tags": ["VIP專屬", "季初行情", "先行指標", "關鍵價位"],
+    "tags": [
+      "VIP專屬",
+      "季初行情",
+      "先行指標",
+      "關鍵價位"
+    ],
     "is_latest": false
   }
 ]
