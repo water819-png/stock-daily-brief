@@ -138,17 +138,17 @@ function renderMarketOverview(container, m) {
       <div class="inst-pill">
         <div class="inst-name">投信護盤</div>
         <div class="inst-val buy">${inst.investment_trust || '--'}</div>
-        <div class="inst-sub">連續 14 個交易日買超</div>
+        <div class="inst-sub">${inst.trust_note || '連續買超力挺護盤'}</div>
       </div>
       <div class="inst-pill">
         <div class="inst-name">自營商合計</div>
         <div class="inst-val sell">${inst.dealer || '--'}</div>
-        <div class="inst-sub">自行買賣與避險同步調節</div>
+        <div class="inst-sub">${inst.dealer_note || '自行買賣與避險操作'}</div>
       </div>
       <div class="inst-pill">
         <div class="inst-name">三大法人合計</div>
         <div class="inst-val sell">${inst.total || '--'}</div>
-        <div class="inst-sub">10 月累計調節近 1.2 兆</div>
+        <div class="inst-sub">${inst.total_note || '三大法人合計動向'}</div>
       </div>
     </div>
 
