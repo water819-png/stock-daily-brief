@@ -2,9 +2,12 @@ name: Daily Market & Institutional Flows Update
 
 on:
   schedule:
-    # 台灣時間週一至週五 18:00 (UTC 10:00) 自動執行抓取證交所官方數據
-    - cron: '0 10 * * 1-5'
+    # 台灣時間週一至週五 18:08 自動執行 (UTC 10:08 = 台灣時間 18:08，避開 00 分整點排程壅塞)
+    - cron: '8 10 * * 1-5'
   workflow_dispatch: # 支援在 GitHub 網頁隨時點擊「Run workflow」手動觸發
+
+permissions:
+  contents: write
 
 jobs:
   update-market:
