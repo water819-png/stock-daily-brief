@@ -34,6 +34,13 @@
   padding: 0;
 }
 
+html {
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
 body {
   font-family: var(--font-sans);
   background-color: var(--bg-primary);
@@ -41,7 +48,10 @@ body {
   line-height: 1.6;
   min-height: 100vh;
   position: relative;
+  width: 100%;
+  max-width: 100%;
   overflow-x: hidden;
+  touch-action: pan-y; /* 鎖定僅允許上下垂直滑動，徹底禁止左右橫向滑動與回彈 */
   -webkit-font-smoothing: antialiased;
 }
 
@@ -52,6 +62,8 @@ body {
   filter: blur(120px);
   pointer-events: none;
   z-index: 0;
+  max-width: 100vw;
+  overflow: hidden;
 }
 
 .bg-glow-1 {
@@ -1007,90 +1019,199 @@ button, a {
   background: rgba(255, 255, 255, 0.16);
 }
 
-/* 行動版 RWD 調整（手機專屬優化） */
+/* 行動版 RWD 調整（手機專屬極致鎖定與流暢佈局） */
 @media (max-width: 768px) {
+  html, body {
+    overflow-x: hidden !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+    touch-action: pan-y !important; /* 核心：鎖定只能垂直上下滑動，徹底禁止左右橫向偏移 */
+  }
+
   body {
     padding-bottom: calc(75px + env(safe-area-inset-bottom, 0px));
   }
 
+  /* 背景光暈尺寸限制，防止大圓球溢出螢幕邊緣觸發橫向滑動 */
+  .bg-glow {
+    max-width: 100vw !important;
+    overflow: hidden !important;
+  }
+
+  .bg-glow-1 {
+    width: 250px !important;
+    height: 250px !important;
+    top: -40px !important;
+    right: -20px !important;
+  }
+
+  .bg-glow-2 {
+    width: 250px !important;
+    height: 250px !important;
+    top: 250px !important;
+    left: -20px !important;
+  }
+
   .mobile-bottom-bar {
     display: block;
+    width: 100%;
+    max-width: 100vw;
+    box-sizing: border-box;
   }
 
   .main-content {
-    padding: 16px 14px 40px;
-    gap: 20px;
+    padding: 14px 12px 40px;
+    gap: 16px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
   }
 
   .navbar {
     padding: 0;
+    width: 100%;
+    overflow: hidden;
   }
 
   .nav-container {
-    padding: 12px 14px;
+    padding: 10px 14px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .logo {
+    min-width: 0;
+    flex-shrink: 1;
+    overflow: hidden;
+    gap: 8px;
+  }
+
+  .logo-text {
+    min-width: 0;
+    overflow: hidden;
   }
 
   .brand-title {
-    font-size: 16px;
+    font-size: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .brand-sub {
+    display: none !important; /* 手機端隱藏過長英文副標題，避免頂部寬度溢出 */
+  }
+
+  .nav-tabs {
+    display: none !important; /* 手機版頂部分頁隱藏，由底部吸頂快捷列掌控 */
+  }
+
+  .nav-actions {
+    flex-shrink: 0;
+  }
+
+  .nav-actions .btn-secondary {
+    padding: 6px 10px;
+    font-size: 12px;
   }
 
   .hero-card {
-    padding: 20px 16px;
+    padding: 18px 14px;
     border-radius: var(--radius-md);
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  .hero-header-line {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .hero-badge {
+    font-size: 12px;
+    padding: 4px 10px;
+    max-width: 100%;
+    word-break: break-word;
+  }
+
+  .hero-vip-tag {
+    font-size: 11px;
+    padding: 4px 8px;
   }
 
   .hero-title {
-    font-size: 20px;
+    font-size: 19px;
     line-height: 1.4;
+    word-break: break-word;
   }
 
   .hero-desc {
     font-size: 13px;
-    line-height: 1.6;
-    margin-bottom: 16px;
+    line-height: 1.55;
+    margin-bottom: 14px;
+    word-break: break-word;
   }
 
   .market-overview-wrapper {
-    padding: 14px;
-    gap: 14px;
+    padding: 12px 10px;
+    gap: 12px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
   }
 
   .market-lead-box {
-    font-size: 13px;
-    padding: 10px 12px;
+    font-size: 12.5px;
+    padding: 10px 10px;
+    line-height: 1.6;
+    word-break: break-word;
   }
 
   /* 手機端三大法人 2x2 網格 */
   .inst-cards-row {
     grid-template-columns: 1fr 1fr;
-    gap: 8px;
+    gap: 6px;
+    width: 100%;
   }
 
   .inst-pill {
-    padding: 8px 10px;
+    padding: 8px 8px;
+    min-width: 0;
+    overflow: hidden;
   }
 
   .inst-val {
-    font-size: 14px;
+    font-size: 13.5px;
   }
 
   .market-stats-row {
     grid-template-columns: 1fr 1fr;
-    gap: 8px;
+    gap: 6px;
+    width: 100%;
   }
 
   .m-stat-pill {
-    padding: 8px 10px;
+    padding: 8px 8px;
+    min-width: 0;
+    overflow: hidden;
   }
 
   .m-stat-number {
-    font-size: 15px;
+    font-size: 14.5px;
+    flex-wrap: wrap;
   }
 
   .hero-cta-group {
     flex-direction: column;
     align-items: stretch;
     gap: 10px;
+    width: 100%;
   }
 
   .hero-cta-group .btn-primary,
@@ -1099,37 +1220,143 @@ button, a {
     width: 100%;
     padding: 12px 16px;
     font-size: 14px;
+    box-sizing: border-box;
   }
 
   .stats-bar {
     grid-template-columns: 1fr;
-    gap: 10px;
+    gap: 8px;
+    width: 100%;
   }
 
   .stat-card {
-    padding: 12px 16px;
+    padding: 12px 14px;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .search-input-wrapper {
     width: 100%;
+    box-sizing: border-box;
   }
 
   .archive-grid {
     grid-template-columns: 1fr;
     gap: 14px;
+    width: 100%;
   }
 
   .archive-card {
-    padding: 18px 16px;
+    padding: 16px 14px;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
   }
 
   .card-title {
     font-size: 16px;
+    word-break: break-word;
+  }
+
+  .card-desc {
+    word-break: break-word;
   }
 
   .top10-ranking-grid {
     grid-template-columns: 1fr;
-    gap: 12px;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .ranking-col {
+    padding: 12px 10px;
+    width: 100%;
+    box-sizing: border-box;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .stock-chips-wrap {
+    gap: 5px;
+  }
+
+  .stock-chip {
+    font-size: 11.5px;
+    padding: 3px 7px;
+    max-width: 100%;
+    word-break: break-all;
+  }
+
+  /* 行事曆行動版細節鎖定 */
+  .calendar-hero {
+    padding: 18px 14px;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  .cal-hero-title {
+    font-size: 20px;
+    word-break: break-word;
+  }
+
+  .cal-hero-desc {
+    font-size: 13px;
+    word-break: break-word;
+  }
+
+  .winter-alert-box {
+    padding: 10px 12px;
+    font-size: 12px;
+    gap: 10px;
+    word-break: break-word;
+  }
+
+  .stage-card {
+    padding: 16px 12px;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  .stage-main-title {
+    font-size: 17px;
+    word-break: break-word;
+  }
+
+  .stage-events-list {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .stage-event-pill {
+    padding: 10px 12px;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .macro-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .macro-card {
+    padding: 16px 14px;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .taiwan-impact-card {
+    padding: 18px 14px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .taiwan-impact-list li {
+    font-size: 13px;
+    word-break: break-word;
   }
 
   /* 手機預覽抽屜全螢幕感 */
@@ -1138,6 +1365,7 @@ button, a {
     max-height: 94vh;
     border-radius: var(--radius-md) var(--radius-md) 0 0;
     margin-top: auto;
+    width: 100%;
   }
 
   .modal-overlay {
