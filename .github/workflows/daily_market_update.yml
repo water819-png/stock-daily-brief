@@ -1,10 +1,7 @@
 name: Daily Market & Institutional Flows Update
 
 on:
-  schedule:
-    # 台灣時間週一至週五 18:08 自動執行 (UTC 10:08 = 台灣時間 18:08，避開 00 分整點排程壅塞)
-    - cron: '8 10 * * 1-5'
-  workflow_dispatch: # 支援在 GitHub 網頁隨時點擊「Run workflow」手動觸發
+  workflow_dispatch: # 支援在 GitHub 網頁手動備用觸發 (日常自動化已由 Antigravity 本地排程接手)
 
 permissions:
   contents: write
