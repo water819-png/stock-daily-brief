@@ -16,6 +16,9 @@ jobs:
     steps:
       - name: 📥 下載最新程式碼
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
 
       - name: 🐍 設定 Python 環境
         uses: actions/setup-python@v5
@@ -28,7 +31,13 @@ jobs:
 
       - name: 💾 自動儲存並推播更新至 GitHub
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git add data/briefs.json
-          git diff --staged --quiet || (git commit -m "🤖 自動更新：今日台股大盤與三大法人籌碼 [$(date +'%Y-%m-%d')]" && git pull --rebase && git push)
+          if ! git diff --quiet || ! git diff --staged --quiet; then
+            git commit -m "🤖 自動更新：今日台股大盤與三大法人籌碼 [$(date +'%Y-%m-%d')]"
+            git pull --rebase origin main || true
+            git push origin main
+          else
+            echo "今日無數據變更，略過提交"
+          fi
