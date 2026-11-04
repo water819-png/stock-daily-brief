@@ -41,7 +41,18 @@ function renderHeroCard(item) {
   
   // 更新 Google Doc 連結
   const btnOpen = document.getElementById('btnOpenDoc');
-  btnOpen.href = item.url;
+  if (!item.url || item.url === '#' || item.url.trim() === '') {
+    btnOpen.href = '#';
+    btnOpen.innerHTML = '<i class="fa-solid fa-pen-nib"></i> 盤後分析報告撰寫中（稍後上線）';
+    btnOpen.onclick = (e) => {
+      e.preventDefault();
+      showToast('📝 今日 VIP 盤後分析報告正在撰寫整理中，請稍候片刻！');
+    };
+  } else {
+    btnOpen.href = item.url;
+    btnOpen.innerHTML = '<i class="fa-solid fa-arrow-up-right-from-square"></i> 立即開啟 Google Doc 完整閱讀';
+    btnOpen.onclick = null;
+  }
 
   // 標籤渲染
   const tagsContainer = document.getElementById('heroTags');
@@ -376,6 +387,10 @@ const modalExternalLink = document.getElementById('modalExternalLink');
 const btnCloseModal = document.getElementById('btnCloseModal');
 
 function openPreviewModal(title, url) {
+  if (!url || url === '#' || url.trim() === '') {
+    showToast('📝 今日 VIP 盤後分析報告正在撰寫整理中，請稍候片刻！');
+    return;
+  }
   modalTitle.textContent = title;
   modalExternalLink.href = url;
   
