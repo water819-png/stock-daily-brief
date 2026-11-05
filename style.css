@@ -2210,3 +2210,141 @@ button, a {
     padding: 12px 14px;
   }
 }
+
+
+/* ==========================================================================
+   行事曆智慧時態狀態樣式 (Calendar Smart Status Styles)
+   ========================================================================== */
+
+/* 狀態標籤 */
+.stage-status-badge {
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.stage-status-badge.completed {
+  background: rgba(100, 116, 139, 0.18);
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  color: #94a3b8;
+}
+
+.stage-status-badge.active {
+  background: rgba(244, 63, 94, 0.2);
+  border: 1px solid #f43f5e;
+  color: #fecdd3;
+  box-shadow: 0 0 12px rgba(244, 63, 94, 0.25);
+  animation: pulseActive 2s infinite ease-in-out;
+}
+
+.stage-status-badge.upcoming {
+  background: rgba(56, 189, 248, 0.15);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  color: #7dd3fc;
+}
+
+/* 已結束卡片樣式：微霧降噪，突出戰報複盤感 */
+.stage-card.is-completed {
+  background: rgba(15, 23, 42, 0.45);
+  border-color: rgba(255, 255, 255, 0.08);
+  opacity: 0.88;
+}
+
+.stage-card.is-completed:hover {
+  opacity: 1;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.tactical-box.is-completed {
+  border-left-color: #64748b;
+  background: rgba(30, 41, 59, 0.5);
+}
+
+.tactical-box.is-completed .tactical-icon {
+  color: #94a3b8;
+}
+
+.tactical-box.is-completed .tactical-label {
+  color: #cbd5e1;
+}
+
+/* 今日焦點卡片樣式：高亮呼吸燈，強烈聚焦點 */
+.stage-card.is-active {
+  background: linear-gradient(145deg, rgba(30, 41, 59, 0.9) 0%, rgba(15, 23, 42, 0.98) 100%);
+  border: 1px solid rgba(244, 63, 94, 0.55);
+  box-shadow: 0 0 30px rgba(244, 63, 94, 0.18), inset 0 0 15px rgba(244, 63, 94, 0.05);
+}
+
+.tactical-box.is-active {
+  border-left-color: #f43f5e;
+  background: rgba(244, 63, 94, 0.08);
+}
+
+.tactical-box.is-active .tactical-icon {
+  color: #f43f5e;
+}
+
+.tactical-box.is-active .tactical-label {
+  color: #fda4af;
+  font-weight: 800;
+}
+
+/* 事件膠囊內部狀態標籤 */
+.event-status-tag {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.event-status-tag.completed {
+  background: rgba(100, 116, 139, 0.18);
+  color: #94a3b8;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+}
+
+.event-status-tag.active {
+  background: rgba(239, 68, 68, 0.2);
+  color: #fca5a5;
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  font-weight: 800;
+}
+
+.event-status-tag.upcoming {
+  background: rgba(56, 189, 248, 0.15);
+  color: #7dd3fc;
+  border: 1px solid rgba(56, 189, 248, 0.3);
+}
+
+/* 紅色呼吸燈點 */
+.pulse-dot-red {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #f43f5e;
+  box-shadow: 0 0 8px #f43f5e;
+  animation: pulseDot 1.5s infinite;
+}
+
+@keyframes pulseActive {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(244, 63, 94, 0.25);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(244, 63, 94, 0.5);
+  }
+}
+
+@keyframes pulseDot {
+  0% { transform: scale(0.9); opacity: 0.8; }
+  50% { transform: scale(1.3); opacity: 1; }
+  100% { transform: scale(0.9); opacity: 0.8; }
+}

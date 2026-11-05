@@ -702,48 +702,119 @@ function renderCalendarView(data) {
     if (sEl) sEl.textContent = data.theme_subtitle;
   }
 
-  // 1. 渲染三大關卡時程表
+  // 1. 渲染三大關卡時程表（智慧時態狀態標記）
+  const currentDateStr = data.updated_at || '2026-11-05';
+  let todayMMDD = '11/05';
+  const dateMatch = currentDateStr.match(/(\d{4})-(\d{2})-(\d{2})/);
+  if (dateMatch) {
+    todayMMDD = `${dateMatch[2]}/${dateMatch[3]}`;
+  }
+
   const stagesWrap = document.getElementById('stagesContainer');
   if (stagesWrap && data.stages) {
-    stagesWrap.innerHTML = data.stages.map(st => `
-      <div class="stage-card">
-        <div class="stage-card-header">
-          <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
-            <span class="stage-num-badge ${st.badge_color || 'purple'}">
-              <i class="fa-solid fa-flag-checkered"></i> ${st.stage_number}
-            </span>
-            <span class="stage-tag-badge">${st.badge || ''}</span>
-          </div>
-          <span class="stage-date-text">
-            <i class="fa-regular fa-calendar"></i> ${st.date_range}
-          </span>
-        </div>
+    stagesWrap.innerHTML = data.stages.map(st => {
+      // 解析日期範圍判斷狀態
+      const rawDates = (st.date_range.match(/\d{1,2}\/\d{1,2}/g) || []).map(d => {
+        const parts = d.split('/');
+        return `${parts[0].padStart(2, '0')}/${parts[1].padStart(2, '0')}`;
+      });
 
-        <h3 class="stage-main-title">${st.title}</h3>
+      let stageStatus = 'upcoming';
+      let statusBadgeHtml = '';
+      let cardClass = 'is-upcoming';
+      let tacticalPrefix = '戰術觀察：';
 
-        <div class="stage-events-list">
-          ${(st.events || []).map(ev => `
-            <div class="stage-event-pill">
-              <div class="event-header-row">
-                <span class="event-name">${ev.name}</span>
+      if (rawDates.length > 0) {
+        const minDate = rawDates[0];
+        const maxDate = rawDates[rawDates.length - 1];
+
+        if (maxDate < todayMMDD) {
+          stageStatus = 'completed';
+          cardClass = 'is-completed';
+          statusBadgeHtml = `<span class="stage-status-badge completed"><i class="fa-solid fa-circle-check"></i> 戰果已出爐</span>`;
+          tacticalPrefix = '戰果複盤：';
+        } else if (todayMMDD >= minDate && todayMMDD <= maxDate) {
+          stageStatus = 'active';
+          cardClass = 'is-active';
+          statusBadgeHtml = `<span class="stage-status-badge active"><span class="pulse-dot-red"></span> 🔥 今日焦點戰役</span>`;
+          tacticalPrefix = '今日決戰前瞻：';
+        } else {
+          stageStatus = 'upcoming';
+          cardClass = 'is-upcoming';
+          statusBadgeHtml = `<span class="stage-status-badge upcoming"><i class="fa-regular fa-clock"></i> 即將登場</span>`;
+          tacticalPrefix = '戰術觀察：';
+        }
+      }
+
+      // 渲染內部個別事件
+      const eventsHtml = (st.events || []).map(ev => {
+        const evDates = (ev.tw_time.match(/\d{1,2}\/\d{1,2}/g) || []).map(d => {
+          const parts = d.split('/');
+          return `${parts[0].padStart(2, '0')}/${parts[1].padStart(2, '0')}`;
+        });
+
+        let evStatusBadge = '';
+        if (evDates.length > 0) {
+          const evMax = evDates[evDates.length - 1];
+          const evMin = evDates[0];
+          if (evMax < todayMMDD) {
+            evStatusBadge = `<span class="event-status-tag completed"><i class="fa-solid fa-check"></i> 已公布</span>`;
+          } else if (todayMMDD >= evMin && todayMMDD <= evMax) {
+            evStatusBadge = `<span class="event-status-tag active"><i class="fa-solid fa-fire"></i> 今晚重磅</span>`;
+          } else {
+            evStatusBadge = `<span class="event-status-tag upcoming"><i class="fa-regular fa-clock"></i> 倒數決戰</span>`;
+          }
+        }
+
+        return `
+          <div class="stage-event-pill">
+            <div class="event-header-row">
+              <span class="event-name">${ev.name}</span>
+              <div style="display: flex; gap: 6px; align-items: center;">
+                ${evStatusBadge}
                 <span class="event-tag-pill">${ev.tag || ev.timing || ''}</span>
               </div>
-              <div class="event-time-badge">
-                <i class="fa-solid fa-bell"></i> ${ev.tw_time}
-              </div>
             </div>
-          `).join('')}
-        </div>
+            <div class="event-time-badge">
+              <i class="fa-solid fa-bell"></i> ${ev.tw_time}
+            </div>
+          </div>
+        `;
+      }).join('');
 
-        <div class="tactical-box">
-          <div class="tactical-icon"><i class="fa-solid fa-crosshairs"></i></div>
-          <div class="tactical-content">
-            <span class="tactical-label">戰術觀察：</span>
-            ${st.tactical_observation}
+      return `
+        <div class="stage-card ${cardClass}">
+          <div class="stage-card-header">
+            <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+              <span class="stage-num-badge ${st.badge_color || 'purple'}">
+                <i class="fa-solid fa-flag-checkered"></i> ${st.stage_number}
+              </span>
+              <span class="stage-tag-badge">${st.badge || ''}</span>
+              ${statusBadgeHtml}
+            </div>
+            <span class="stage-date-text">
+              <i class="fa-regular fa-calendar"></i> ${st.date_range}
+            </span>
+          </div>
+
+          <h3 class="stage-main-title">${st.title}</h3>
+
+          <div class="stage-events-list">
+            ${eventsHtml}
+          </div>
+
+          <div class="tactical-box ${cardClass}">
+            <div class="tactical-icon">
+              <i class="fa-solid ${stageStatus === 'completed' ? 'fa-square-check' : 'fa-crosshairs'}"></i>
+            </div>
+            <div class="tactical-content">
+              <span class="tactical-label">${tacticalPrefix}</span>
+              ${st.tactical_observation}
+            </div>
           </div>
         </div>
-      </div>
-    `).join('');
+      `;
+    }).join('');
   }
 
   // 2. 渲染六大宏觀經濟變數
