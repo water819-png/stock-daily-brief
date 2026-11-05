@@ -77,6 +77,10 @@ function renderHeroCard(item) {
 
   // 站內預覽按鈕
   document.getElementById('btnPreviewDoc').onclick = () => {
+    if (!item.url || item.url === '#' || item.url.trim() === '') {
+      showToast('📝 今日 VIP 盤後分析報告正在撰寫整理中，請稍候片刻！');
+      return;
+    }
     openPreviewModal(item.title, item.url);
   };
 
@@ -107,6 +111,10 @@ function renderHeroCard(item) {
   const mBtnPreview = document.getElementById('mBtnPreviewDoc');
   if (mBtnPreview) {
     mBtnPreview.onclick = () => {
+      if (!item.url || item.url === '#' || item.url.trim() === '') {
+        showToast('📝 今日 VIP 盤後分析報告正在撰寫整理中，請稍候片刻！');
+        return;
+      }
       openPreviewModal(item.title, item.url);
     };
   }
@@ -279,6 +287,7 @@ function renderArchiveGrid(list, isSearchResult = false) {
     card.className = 'archive-card';
 
     const tagsHtml = (item.tags || []).map(t => `<span class="tag-pill">#${t}</span>`).join('');
+    const hasValidUrl = item.url && item.url !== '#' && item.url.trim() !== '';
 
     card.innerHTML = `
       <div>
@@ -293,26 +302,43 @@ function renderArchiveGrid(list, isSearchResult = false) {
         <div class="card-tags">${tagsHtml}</div>
       </div>
       <div class="card-actions">
-        <a href="${item.url}" target="_blank" class="btn-primary btn-sm" style="flex: 1;">
-          <i class="fa-solid fa-arrow-up-right-from-square"></i> 開啟閱讀
-        </a>
-        <button class="btn-glass btn-sm btn-card-preview" title="站內預覽">
-          <i class="fa-solid fa-eye"></i>
-        </button>
-        <button class="btn-secondary btn-sm btn-card-copy" title="複製連結">
-          <i class="fa-regular fa-copy"></i>
-        </button>
+        ${hasValidUrl ? `
+          <a href="${item.url}" target="_blank" class="btn-primary btn-sm" style="flex: 1;">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> 開啟閱讀
+          </a>
+          <button class="btn-glass btn-sm btn-card-preview" title="站內預覽">
+            <i class="fa-solid fa-eye"></i>
+          </button>
+          <button class="btn-secondary btn-sm btn-card-copy" title="複製連結">
+            <i class="fa-regular fa-copy"></i>
+          </button>
+        ` : `
+          <button class="btn-primary btn-sm btn-card-pending" style="flex: 1; background: rgba(244, 63, 94, 0.15); border: 1px dashed rgba(244, 63, 94, 0.4); color: #fca5a5; cursor: pointer; padding: 9px 12px; font-size: 13px; font-weight: 700; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; gap: 8px;">
+            <i class="fa-solid fa-pen-nib"></i> 報告撰寫中（稍後上線）
+          </button>
+        `}
       </div>
     `;
 
     // 綁定卡片按鈕事件
-    card.querySelector('.btn-card-preview').onclick = () => {
-      openPreviewModal(item.title, item.url);
-    };
-
-    card.querySelector('.btn-card-copy').onclick = () => {
-      copyToClipboard(item.url, `已複製「${item.display_date} 盤後快訊」連結！`);
-    };
+    if (hasValidUrl) {
+      const btnPrev = card.querySelector('.btn-card-preview');
+      if (btnPrev) {
+        btnPrev.onclick = () => openPreviewModal(item.title, item.url);
+      }
+      const btnCopy = card.querySelector('.btn-card-copy');
+      if (btnCopy) {
+        btnCopy.onclick = () => copyToClipboard(item.url, `已複製「${item.display_date} 盤後快訊」連結！`);
+      }
+    } else {
+      const btnPending = card.querySelector('.btn-card-pending');
+      if (btnPending) {
+        btnPending.onclick = (e) => {
+          e.preventDefault();
+          showToast(`📝 ${item.display_date || item.date} 盤後分析報告正在撰寫整理中，請稍候片刻！`);
+        };
+      }
+    }
 
     grid.appendChild(card);
   });
