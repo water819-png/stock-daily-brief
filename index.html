@@ -68,30 +68,6 @@
   <main class="main-content">
     <!-- 視圖一：每日盤後快訊 (Briefs View) -->
     <div id="briefsView" class="page-view active">
-      <!-- 統計計數器小看板 -->
-      <section class="stats-bar">
-      <div class="stat-card">
-        <div class="stat-icon red"><i class="fa-solid fa-fire-flame-curved"></i></div>
-        <div class="stat-info">
-          <div class="stat-label">今日閱讀人次</div>
-          <div class="stat-value" id="todayViews">--</div>
-        </div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-icon blue"><i class="fa-solid fa-users"></i></div>
-        <div class="stat-info">
-          <div class="stat-label">累計總造訪次數</div>
-          <div class="stat-value" id="totalViews">--</div>
-        </div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-icon green"><i class="fa-solid fa-clock-rotate-left"></i></div>
-        <div class="stat-info">
-          <div class="stat-label">已發布期數</div>
-          <div class="stat-value" id="totalBriefsCount">--</div>
-        </div>
-      </div>
-    </section>
 
     <!-- 今日最新快照英雄卡片 (Hero Card) -->
     <section class="hero-section">
@@ -168,6 +144,31 @@
           <span id="toggleArchiveText">展開更多歷史快訊</span>
           <i id="toggleArchiveIcon" class="fa-solid fa-chevron-down"></i>
         </button>
+      </div>
+    </section>
+
+    <!-- 統計計數器小看板 -->
+      <section class="stats-bar">
+      <div class="stat-card">
+        <div class="stat-icon red"><i class="fa-solid fa-fire-flame-curved"></i></div>
+        <div class="stat-info">
+          <div class="stat-label">今日閱讀人次</div>
+          <div class="stat-value" id="todayViews">--</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon blue"><i class="fa-solid fa-users"></i></div>
+        <div class="stat-info">
+          <div class="stat-label">累計總造訪次數</div>
+          <div class="stat-value" id="totalViews">--</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon green"><i class="fa-solid fa-clock-rotate-left"></i></div>
+        <div class="stat-info">
+          <div class="stat-label">已發布期數</div>
+          <div class="stat-value" id="totalBriefsCount">--</div>
+        </div>
       </div>
     </section>
     </div>

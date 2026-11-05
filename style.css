@@ -148,6 +148,7 @@ body {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
+  margin-top: 36px;
 }
 
 .stat-card {
@@ -1227,6 +1228,8 @@ button, a {
     grid-template-columns: 1fr;
     gap: 8px;
     width: 100%;
+    margin-top: 24px;
+    margin-bottom: 20px;
   }
 
   .stat-card {
