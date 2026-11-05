@@ -40,6 +40,11 @@
           <i class="fa-solid fa-newspaper"></i>
           <span>每日盤後快訊</span>
         </button>
+        <button id="navTab3M" class="nav-tab-btn" type="button">
+          <i class="fa-solid fa-bolt"></i>
+          <span>3M 新高新低</span>
+          <span class="nav-tab-badge snap-tab-badge">今日快照</span>
+        </button>
         <button id="navTabCalendar" class="nav-tab-btn" type="button">
           <i class="fa-solid fa-calendar-days"></i>
           <span>重大行事曆</span>
@@ -215,6 +220,70 @@
         <!-- 由 JS 動態注入 -->
       </section>
     </div>
+
+    <!-- 視圖三：3M 新高新低即時抓取快照 (Snapshot 3M View) -->
+    <div id="snapshot3MView" class="page-view" style="display: none;">
+      <section class="snapshot-container">
+        <!-- 標頭卡片 -->
+        <div class="snapshot-header-card">
+          <div class="snapshot-header-top">
+            <h1 class="snapshot-main-title">
+              <span class="snap-bolt-icon">⚡</span> 當日即時抓取快照（<span id="snapDate">2026-11-05</span> 觸發清單）
+            </h1>
+            <span class="snap-header-tag">3M 突破 / 跌破</span>
+          </div>
+          <p class="snapshot-subtitle">專注今日突破/跌破訊號，精簡 6 欄位呈現買賣點基準</p>
+          <div class="snapshot-stats-banner">
+            共 <strong id="snapTotalCount">943</strong> 檔
+            （<span class="snap-pill-red">🔴 創高 <strong id="snapHighCount">18</strong> 檔</span>
+            ｜<span class="snap-pill-green">🟢 破低 <strong id="snapLowCount">925</strong> 檔</span>）
+          </div>
+        </div>
+
+        <!-- 篩選器與搜尋列 -->
+        <div class="snapshot-filter-bar">
+          <div class="snapshot-pills">
+            <button class="snap-pill-btn active" data-filter="all" type="button">
+              全部 (<span id="pillCountAll">943</span>)
+            </button>
+            <button class="snap-pill-btn btn-red" data-filter="high" type="button">
+              🔴 當日創新高 (<span id="pillCountHigh">18</span>)
+            </button>
+            <button class="snap-pill-btn btn-green" data-filter="low" type="button">
+              🟢 當日創新低 (<span id="pillCountLow">925</span>)
+            </button>
+          </div>
+          <div class="snapshot-search">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <input type="text" id="snapSearchInput" placeholder="快速搜尋代號、名稱、市場..." />
+          </div>
+        </div>
+
+        <!-- 表格容器 -->
+        <div class="snapshot-table-wrapper">
+          <table class="snapshot-table">
+            <thead>
+              <tr>
+                <th style="width: 15%;">日期</th>
+                <th style="width: 15%;">代號</th>
+                <th style="width: 25%;">名稱</th>
+                <th style="width: 15%;">市場</th>
+                <th style="width: 15%; text-align: right;">觸發價</th>
+                <th style="width: 15%; text-align: right;">關鍵價位</th>
+              </tr>
+            </thead>
+            <tbody id="snapshotTableBody">
+              <!-- JS 動態生成 -->
+            </tbody>
+          </table>
+          <div id="snapEmptyMsg" class="snapshot-empty" style="display: none;">
+            <i class="fa-solid fa-magnifying-glass-chart"></i>
+            <p>沒有符合條件的個股資料</p>
+          </div>
+        </div>
+      </section>
+    </div>
+
   </main>
 
   <!-- 頁面底部 -->
@@ -266,6 +335,10 @@
       <button id="mTabBriefs" class="m-nav-btn active" type="button">
         <i class="fa-solid fa-newspaper"></i>
         <span>盤後快訊</span>
+      </button>
+      <button id="mTab3M" class="m-nav-btn" type="button">
+        <i class="fa-solid fa-bolt"></i>
+        <span>3M快照</span>
       </button>
       <button id="mTabCalendar" class="m-nav-btn" type="button">
         <i class="fa-solid fa-calendar-days"></i>

@@ -82,12 +82,27 @@ function renderHeroCard(item) {
 
   // 複製單篇連結
   document.getElementById('btnCopyDocLink').onclick = () => {
+    if (!item.url || item.url === '#' || item.url.trim() === '') {
+      showToast('📝 今日 VIP 盤後分析報告正在撰寫整理中，請稍候片刻！');
+      return;
+    }
     copyToClipboard(item.url, `已複製「${item.display_date} 盤後快訊」的 Google Doc 連結！`);
   };
 
   // 手機版底部快捷操作列綁定
   const mBtnOpen = document.getElementById('mBtnOpenDoc');
-  if (mBtnOpen) mBtnOpen.href = item.url;
+  if (mBtnOpen) {
+    if (!item.url || item.url === '#' || item.url.trim() === '') {
+      mBtnOpen.href = '#';
+      mBtnOpen.onclick = (e) => {
+        e.preventDefault();
+        showToast('📝 今日 VIP 盤後分析報告正在撰寫整理中，請稍候片刻！');
+      };
+    } else {
+      mBtnOpen.href = item.url;
+      mBtnOpen.onclick = null;
+    }
+  }
 
   const mBtnPreview = document.getElementById('mBtnPreviewDoc');
   if (mBtnPreview) {
@@ -490,37 +505,172 @@ function showToast(msg) {
 
 let calendarData = null;
 
+let snapshot3MData = null;
+let current3MFilter = 'all'; // 'all', 'high', 'low'
+let current3MSearch = '';
+
 function switchView(viewName) {
   const briefsView = document.getElementById('briefsView');
   const calendarView = document.getElementById('calendarView');
+  const snapshot3MView = document.getElementById('snapshot3MView');
+
   const navTabBriefs = document.getElementById('navTabBriefs');
+  const navTab3M = document.getElementById('navTab3M');
   const navTabCalendar = document.getElementById('navTabCalendar');
+
   const mTabBriefs = document.getElementById('mTabBriefs');
+  const mTab3M = document.getElementById('mTab3M');
   const mTabCalendar = document.getElementById('mTabCalendar');
 
-  if (viewName === 'calendar') {
-    if (briefsView) briefsView.style.display = 'none';
-    if (calendarView) calendarView.style.display = 'flex';
+  // 清除所有 Tab active 狀態
+  [navTabBriefs, navTab3M, navTabCalendar].forEach(b => b && b.classList.remove('active'));
+  [mTabBriefs, mTab3M, mTabCalendar].forEach(b => b && b.classList.remove('active'));
 
-    if (navTabBriefs) navTabBriefs.classList.remove('active');
+  // 隱藏所有視圖
+  if (briefsView) briefsView.style.display = 'none';
+  if (calendarView) calendarView.style.display = 'none';
+  if (snapshot3MView) snapshot3MView.style.display = 'none';
+
+  if (viewName === 'calendar') {
+    if (calendarView) calendarView.style.display = 'flex';
     if (navTabCalendar) navTabCalendar.classList.add('active');
-    if (mTabBriefs) mTabBriefs.classList.remove('active');
     if (mTabCalendar) mTabCalendar.classList.add('active');
 
     window.location.hash = '#calendar';
     loadCalendar();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  } else if (viewName === '3m') {
+    if (snapshot3MView) snapshot3MView.style.display = 'block';
+    if (navTab3M) navTab3M.classList.add('active');
+    if (mTab3M) mTab3M.classList.add('active');
+
+    window.location.hash = '#3m';
+    loadSnapshot3M();
   } else {
     if (briefsView) briefsView.style.display = 'flex';
-    if (calendarView) calendarView.style.display = 'none';
-
     if (navTabBriefs) navTabBriefs.classList.add('active');
-    if (navTabCalendar) navTabCalendar.classList.remove('active');
     if (mTabBriefs) mTabBriefs.classList.add('active');
-    if (mTabCalendar) mTabCalendar.classList.remove('active');
 
     window.location.hash = '#briefs';
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// 載入與渲染 3M 新高新低即時抓取快照
+async function loadSnapshot3M() {
+  if (!snapshot3MData) {
+    try {
+      const res = await fetch('data/snapshot_3m.json?v=' + Date.now());
+      if (res.ok) {
+        snapshot3MData = await res.json();
+      }
+    } catch (err) {
+      console.error('載入 snapshot_3m.json 失敗:', err);
+    }
+  }
+
+  if (snapshot3MData) {
+    renderSnapshot3M(snapshot3MData);
+    initSnapshotFilterListeners();
+  }
+}
+
+function renderSnapshot3M(data) {
+  if (!data) return;
+
+  const snapDateEl = document.getElementById('snapDate');
+  if (snapDateEl && data.date) snapDateEl.textContent = data.date;
+
+  const totalEl = document.getElementById('snapTotalCount');
+  if (totalEl) totalEl.textContent = data.total_count;
+
+  const highEl = document.getElementById('snapHighCount');
+  if (highEl) highEl.textContent = data.high_count;
+
+  const lowEl = document.getElementById('snapLowCount');
+  if (lowEl) lowEl.textContent = data.low_count;
+
+  const pAll = document.getElementById('pillCountAll');
+  if (pAll) pAll.textContent = data.total_count;
+
+  const pHigh = document.getElementById('pillCountHigh');
+  if (pHigh) pHigh.textContent = data.high_count;
+
+  const pLow = document.getElementById('pillCountLow');
+  if (pLow) pLow.textContent = data.low_count;
+
+  applySnapshotTableFilter();
+}
+
+function applySnapshotTableFilter() {
+  if (!snapshot3MData || !snapshot3MData.stocks) return;
+
+  const tbody = document.getElementById('snapshotTableBody');
+  const emptyMsg = document.getElementById('snapEmptyMsg');
+  if (!tbody) return;
+
+  const searchKeyword = (current3MSearch || '').trim().toLowerCase();
+
+  const filtered = snapshot3MData.stocks.filter(item => {
+    // 依方向篩選：紅K = 創新高，黑K = 創新低
+    if (current3MFilter === 'high' && item.direction !== '紅K') return false;
+    if (current3MFilter === 'low' && item.direction !== '黑K') return false;
+
+    // 依搜尋關鍵字篩選
+    if (searchKeyword) {
+      const matchCode = item.code.toLowerCase().includes(searchKeyword);
+      const matchName = item.name.toLowerCase().includes(searchKeyword);
+      const matchMkt = item.market.toLowerCase().includes(searchKeyword);
+      if (!matchCode && !matchName && !matchMkt) return false;
+    }
+    return true;
+  });
+
+  if (filtered.length === 0) {
+    tbody.innerHTML = '';
+    if (emptyMsg) emptyMsg.style.display = 'block';
+    return;
+  }
+
+  if (emptyMsg) emptyMsg.style.display = 'none';
+
+  // 6 欄位呈現：日期, 代號, 名稱, 市場, 觸發價, 關鍵價位（依用戶需求移除方向欄位）
+  tbody.innerHTML = filtered.map(s => {
+    const isHigh = s.direction === '紅K';
+    const priceClass = isHigh ? 'price-high' : 'price-low';
+    return `
+      <tr>
+        <td style="color: var(--text-secondary); font-family: var(--font-mono); font-size: 13px;">${s.date}</td>
+        <td><span class="stock-code-pill">${s.code}</span></td>
+        <td class="stock-name-cell">${s.name}</td>
+        <td><span class="stock-market-tag">${s.market}</span></td>
+        <td class="stock-price-cell ${priceClass}">${s.price}</td>
+        <td class="stock-key-cell">${s.key_price}</td>
+      </tr>
+    `;
+  }).join('');
+}
+
+let snapshotListenersInited = false;
+function initSnapshotFilterListeners() {
+  if (snapshotListenersInited) return;
+  snapshotListenersInited = true;
+
+  const pills = document.querySelectorAll('.snap-pill-btn');
+  pills.forEach(btn => {
+    btn.addEventListener('click', () => {
+      pills.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      current3MFilter = btn.getAttribute('data-filter') || 'all';
+      applySnapshotTableFilter();
+    });
+  });
+
+  const searchInput = document.getElementById('snapSearchInput');
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      current3MSearch = e.target.value;
+      applySnapshotTableFilter();
+    });
   }
 }
 
@@ -632,18 +782,26 @@ function renderCalendarView(data) {
 
 function initNavigation() {
   const navTabBriefs = document.getElementById('navTabBriefs');
+  const navTab3M = document.getElementById('navTab3M');
   const navTabCalendar = document.getElementById('navTabCalendar');
+
   const mTabBriefs = document.getElementById('mTabBriefs');
+  const mTab3M = document.getElementById('mTab3M');
   const mTabCalendar = document.getElementById('mTabCalendar');
 
   if (navTabBriefs) navTabBriefs.addEventListener('click', () => switchView('briefs'));
+  if (navTab3M) navTab3M.addEventListener('click', () => switchView('3m'));
   if (navTabCalendar) navTabCalendar.addEventListener('click', () => switchView('calendar'));
+
   if (mTabBriefs) mTabBriefs.addEventListener('click', () => switchView('briefs'));
+  if (mTab3M) mTab3M.addEventListener('click', () => switchView('3m'));
   if (mTabCalendar) mTabCalendar.addEventListener('click', () => switchView('calendar'));
 
   // 檢查網址列 hash
   if (window.location.hash === '#calendar') {
     switchView('calendar');
+  } else if (window.location.hash === '#3m') {
+    switchView('3m');
   }
 }
 

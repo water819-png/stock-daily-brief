@@ -185,11 +185,33 @@ def add_new_brief(date, display_date, title, url, summary, tags, market_overview
             break
 
     if existing_idx is not None:
-        if "market_overview" in briefs[existing_idx] and "market_overview" not in new_item:
-            new_item["market_overview"] = briefs[existing_idx]["market_overview"]
+        old = briefs[existing_idx]
+        if not new_item.get("title") and old.get("title"):
+            new_item["title"] = old["title"]
+        elif not new_item.get("title"):
+            new_item["title"] = f"{datetime.now().strftime('%m%d')} 盤後快訊 - VIP 版"
+
+        if not new_item.get("summary") and old.get("summary"):
+            new_item["summary"] = old["summary"]
+        elif not new_item.get("summary"):
+            new_item["summary"] = "每日台股關鍵價位與進出場策略分析。"
+
+        if not new_item.get("tags") and old.get("tags"):
+            new_item["tags"] = old["tags"]
+        elif not new_item.get("tags"):
+            new_item["tags"] = ["VIP專屬", "大盤解析"]
+
+        if "market_overview" in old and "market_overview" not in new_item:
+            new_item["market_overview"] = old["market_overview"]
         briefs[existing_idx] = new_item
-        print(f"🔄 已覆蓋更新 {date} 的快訊紀錄！")
+        print(f"🔄 已成功更新 {date} 的快訊紀錄！")
     else:
+        if not new_item.get("title"):
+            new_item["title"] = f"{datetime.now().strftime('%m%d')} 盤後快訊 - VIP 版"
+        if not new_item.get("summary"):
+            new_item["summary"] = "每日台股關鍵價位與進出場策略分析。"
+        if not new_item.get("tags"):
+            new_item["tags"] = ["VIP專屬", "大盤解析"]
         briefs.insert(0, new_item)
         print(f"✨ 已新增 {date} 的全新快訊紀錄！")
 
@@ -211,9 +233,9 @@ if __name__ == "__main__":
         date_str = now.strftime("%Y-%m-%d")
         weekday_str = WEEKDAY_MAP[now.weekday()]
         disp_str = f"{now.strftime('%m/%d')} ({weekday_str})"
-        title_str = args.title or f"{now.strftime('%m%d')} 盤後快訊 - VIP 版"
-        summary_str = args.summary or "每日台股關鍵價位與進出場策略分析。"
-        tag_list = [t.strip() for t in args.tags.split(",") if t.strip()] if args.tags else ["VIP專屬", "大盤解析"]
+        title_str = args.title or ""
+        summary_str = args.summary or ""
+        tag_list = [t.strip() for t in args.tags.split(",") if t.strip()] if args.tags else []
         add_new_brief(date_str, disp_str, title_str, args.url, summary_str, tag_list)
     else:
         interactive_mode()

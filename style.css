@@ -1872,3 +1872,341 @@ button, a {
     grid-template-columns: 1fr;
   }
 }
+
+
+/* ==========================================================================
+   3M 新高新低即時抓取快照 (Snapshot 3M Styles)
+   ========================================================================== */
+
+.snap-tab-badge {
+  background: linear-gradient(135deg, #f59e0b, #ef4444) !important;
+  color: #ffffff !important;
+}
+
+.snapshot-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.snapshot-header-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  padding: 28px 32px;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.snapshot-header-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #f59e0b, #ef4444, #10b981);
+}
+
+.snapshot-header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.snapshot-main-title {
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.snap-bolt-icon {
+  color: #f59e0b;
+  font-size: 24px;
+}
+
+.snap-header-tag {
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  background: rgba(245, 158, 11, 0.15);
+  color: #fbbf24;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.snapshot-subtitle {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin: 0 0 16px 0;
+}
+
+.snapshot-stats-banner {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-color);
+  padding: 12px 18px;
+  border-radius: var(--radius-md);
+  font-size: 15px;
+  color: var(--text-primary);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.snapshot-stats-banner strong {
+  color: #38bdf8;
+  font-size: 17px;
+}
+
+.snap-pill-red {
+  color: #f87171;
+  font-weight: 600;
+}
+
+.snap-pill-red strong {
+  color: #ef4444;
+}
+
+.snap-pill-green {
+  color: #4ade80;
+  font-weight: 600;
+}
+
+.snap-pill-green strong {
+  color: #22c55e;
+}
+
+/* 篩選與搜尋控制列 */
+.snapshot-filter-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.snapshot-pills {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.snap-pill-btn {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  padding: 10px 18px;
+  border-radius: var(--radius-full);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.snap-pill-btn:hover {
+  border-color: rgba(255, 255, 255, 0.25);
+  color: var(--text-primary);
+  transform: translateY(-1px);
+}
+
+.snap-pill-btn.active {
+  background: rgba(56, 189, 248, 0.15);
+  border-color: #38bdf8;
+  color: #38bdf8;
+}
+
+.snap-pill-btn.btn-red.active {
+  background: rgba(239, 68, 68, 0.15);
+  border-color: #ef4444;
+  color: #fca5a5;
+  box-shadow: 0 0 14px rgba(239, 68, 68, 0.2);
+}
+
+.snap-pill-btn.btn-green.active {
+  background: rgba(34, 197, 94, 0.15);
+  border-color: #22c55e;
+  color: #86efac;
+  box-shadow: 0 0 14px rgba(34, 197, 94, 0.2);
+}
+
+.snapshot-search {
+  position: relative;
+  min-width: 240px;
+}
+
+.snapshot-search .search-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.snapshot-search input {
+  width: 100%;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-full);
+  padding: 10px 16px 10px 38px;
+  font-size: 14px;
+  color: var(--text-primary);
+  outline: none;
+  transition: var(--transition);
+}
+
+.snapshot-search input:focus {
+  border-color: #38bdf8;
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15);
+}
+
+/* 數據表格 */
+.snapshot-table-wrapper {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+.snapshot-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 14px;
+}
+
+.snapshot-table thead {
+  background: rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.snapshot-table th {
+  padding: 16px 20px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.snapshot-table td {
+  padding: 14px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  color: var(--text-primary);
+  vertical-align: middle;
+}
+
+.snapshot-table tbody tr {
+  transition: background 0.15s ease;
+}
+
+.snapshot-table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.snapshot-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.stock-code-pill {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.1);
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 13px;
+  display: inline-block;
+}
+
+.stock-name-cell {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.stock-market-tag {
+  font-size: 12px;
+  color: var(--text-secondary);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 2px 8px;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+.stock-price-cell {
+  text-align: right;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.stock-price-cell.price-high {
+  color: #ef4444;
+}
+
+.stock-price-cell.price-low {
+  color: #22c55e;
+}
+
+.stock-key-cell {
+  text-align: right;
+  font-family: var(--font-mono);
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.snapshot-empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-muted);
+}
+
+.snapshot-empty i {
+  font-size: 36px;
+  margin-bottom: 12px;
+  opacity: 0.5;
+}
+
+@media (max-width: 768px) {
+  .snapshot-header-card {
+    padding: 20px 16px;
+  }
+  .snapshot-main-title {
+    font-size: 20px;
+  }
+  .snapshot-stats-banner {
+    font-size: 13px;
+    padding: 10px 14px;
+  }
+  .snapshot-filter-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .snapshot-search {
+    width: 100%;
+  }
+  .snapshot-table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .snapshot-table {
+    min-width: 580px;
+  }
+  .snapshot-table th, .snapshot-table td {
+    padding: 12px 14px;
+  }
+}
