@@ -2510,27 +2510,47 @@ button, a {
 }
 
 
-/* 手機底部快捷按鈕微調，相容 6 鍵配置 */
+/* 手機底部黃金 5 按鈕旗艦配置 (4 Tab + 1 醒目 VIP 膠囊) */
 @media (max-width: 768px) {
+  .mobile-bottom-bar {
+    padding: 8px 10px 12px 10px !important;
+  }
   .mobile-bottom-inner {
-    gap: 4px !important;
+    max-width: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 6px !important;
   }
   .m-nav-btn {
+    flex: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
     padding: 6px 2px !important;
-    font-size: 9.5px !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
     gap: 3px !important;
+    white-space: nowrap !important;
+    min-width: 0 !important;
   }
   .m-nav-btn i {
-    font-size: 13px !important;
+    font-size: 15px !important;
   }
   .m-btn-primary {
+    flex: 1.35 !important;
     height: 42px !important;
-    font-size: 12px !important;
+    font-size: 12.5px !important;
+    font-weight: 800 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 5px !important;
     padding: 0 8px !important;
-  }
-  .m-btn-secondary {
-    height: 42px !important;
-    padding: 0 8px !important;
-    font-size: 11px !important;
+    white-space: nowrap !important;
+    border-radius: var(--radius-full) !important;
+    background: linear-gradient(135deg, #ef4444 0%, #e11d48 100%) !important;
+    box-shadow: 0 3px 14px rgba(239, 68, 68, 0.4) !important;
   }
 }
