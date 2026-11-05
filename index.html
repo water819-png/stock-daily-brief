@@ -228,15 +228,17 @@
         <div class="snapshot-header-card">
           <div class="snapshot-header-top">
             <h1 class="snapshot-main-title">
-              <span class="snap-bolt-icon">⚡</span> 當日即時抓取快照（<span id="snapDate">2026-11-05</span> 觸發清單）
+              <span class="snap-bolt-icon">⚡</span>
+              <span class="title-desktop">當日即時抓取快照（<span id="snapDate">2026-11-05</span> 觸發清單）</span>
+              <span class="title-mobile"><span id="snapDateMobile">2026-11-05</span> 觸發清單</span>
             </h1>
-            <span class="snap-header-tag">3M 突破 / 跌破</span>
+            <span class="snap-header-tag">3M 突破/跌破</span>
           </div>
-          <p class="snapshot-subtitle">專注今日突破/跌破訊號，精簡 6 欄位呈現買賣點基準</p>
+          <p class="snapshot-subtitle">專注今日突破/跌破訊號，精簡 3 欄位呈現買賣點基準</p>
           <div class="snapshot-stats-banner">
             共 <strong id="snapTotalCount">943</strong> 檔
-            （<span class="snap-pill-red">🔴 創高 <strong id="snapHighCount">18</strong> 檔</span>
-            ｜<span class="snap-pill-green">🟢 破低 <strong id="snapLowCount">925</strong> 檔</span>）
+            ｜ <span class="snap-pill-red">🔴 創高 <strong id="snapHighCount">18</strong> 檔</span>
+            ｜ <span class="snap-pill-green">🟢 破低 <strong id="snapLowCount">925</strong> 檔</span>
           </div>
         </div>
 
@@ -247,10 +249,10 @@
               全部 (<span id="pillCountAll">943</span>)
             </button>
             <button class="snap-pill-btn btn-red" data-filter="high" type="button">
-              🔴 當日創新高 (<span id="pillCountHigh">18</span>)
+              🔴 創高 (<span id="pillCountHigh">18</span>)
             </button>
             <button class="snap-pill-btn btn-green" data-filter="low" type="button">
-              🟢 當日創新低 (<span id="pillCountLow">925</span>)
+              🟢 破低 (<span id="pillCountLow">925</span>)
             </button>
           </div>
           <div class="snapshot-search">
@@ -259,17 +261,14 @@
           </div>
         </div>
 
-        <!-- 表格容器 -->
+        <!-- 表格容器 (三竹上下雙層 3 欄旗艦制) -->
         <div class="snapshot-table-wrapper">
           <table class="snapshot-table">
             <thead>
               <tr>
-                <th style="width: 15%;">日期</th>
-                <th style="width: 15%;">代號</th>
-                <th style="width: 25%;">名稱</th>
-                <th style="width: 15%;">市場</th>
-                <th style="width: 15%; text-align: right;">觸發價</th>
-                <th style="width: 15%; text-align: right;">關鍵價位</th>
+                <th style="width: 46%;">標的 (代號 / 名稱)</th>
+                <th style="width: 27%; text-align: right;">觸發價</th>
+                <th style="width: 27%; text-align: right;">關鍵價位</th>
               </tr>
             </thead>
             <tbody id="snapshotTableBody">

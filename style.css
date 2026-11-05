@@ -2348,3 +2348,160 @@ button, a {
   50% { transform: scale(1.3); opacity: 1; }
   100% { transform: scale(0.9); opacity: 0.8; }
 }
+
+
+/* 3M 快照標題響應式單行控制 */
+.title-mobile {
+  display: none;
+}
+.title-desktop {
+  display: inline;
+}
+
+/* 雙層 3 欄制儲存格樣式 */
+.stock-target-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.stock-name-strong {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.25;
+}
+
+.stock-sub-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.stock-mkt-text {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.snapshot-table {
+  width: 100%;
+  table-layout: fixed;
+}
+
+.snapshot-table th:first-child,
+.snapshot-table td:first-child {
+  padding-left: 18px;
+}
+
+.snapshot-table th:last-child,
+.snapshot-table td:last-child {
+  padding-right: 18px;
+}
+
+@media (max-width: 768px) {
+  .title-desktop {
+    display: none !important;
+  }
+  .title-mobile {
+    display: inline !important;
+    font-size: 17px !important;
+    font-weight: 800 !important;
+    white-space: nowrap !important;
+  }
+  .snapshot-header-card {
+    padding: 15px 14px !important;
+  }
+  .snapshot-header-top {
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 8px !important;
+  }
+  .snapshot-main-title {
+    font-size: 17px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+  .snap-bolt-icon {
+    font-size: 18px !important;
+  }
+  .snap-header-tag {
+    font-size: 11px !important;
+    padding: 3px 8px !important;
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+  }
+  .snapshot-subtitle {
+    font-size: 12px !important;
+    margin: 0 0 10px 0 !important;
+  }
+  /* 統計資訊強制單行 */
+  .snapshot-stats-banner {
+    font-size: 12px !important;
+    padding: 7px 10px !important;
+    white-space: nowrap !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 6px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  .snapshot-stats-banner strong {
+    font-size: 14px !important;
+  }
+  /* 三態按鈕強制單行橫排均分 */
+  .snapshot-pills {
+    display: flex !important;
+    gap: 6px !important;
+    width: 100% !important;
+  }
+  .snap-pill-btn {
+    flex: 1 !important;
+    padding: 8px 3px !important;
+    font-size: 12px !important;
+    justify-content: center !important;
+    white-space: nowrap !important;
+    text-align: center !important;
+    gap: 4px !important;
+  }
+  .snapshot-filter-bar {
+    gap: 10px !important;
+  }
+  /* 表格直向 100% 滿版，無須橫向滾動 */
+  .snapshot-table-wrapper {
+    overflow-x: hidden !important;
+  }
+  .snapshot-table {
+    min-width: 0 !important;
+    width: 100% !important;
+    table-layout: fixed !important;
+  }
+  .snapshot-table th, .snapshot-table td {
+    padding: 10px 8px !important;
+  }
+  .snapshot-table th:first-child,
+  .snapshot-table td:first-child {
+    padding-left: 10px !important;
+  }
+  .snapshot-table th:last-child,
+  .snapshot-table td:last-child {
+    padding-right: 10px !important;
+  }
+  .stock-name-strong {
+    font-size: 14px !important;
+  }
+  .stock-code-pill {
+    font-size: 11px !important;
+    padding: 1px 4px !important;
+  }
+  .stock-price-cell {
+    font-size: 15px !important;
+  }
+  .stock-key-cell {
+    font-size: 13px !important;
+  }
+}

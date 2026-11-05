@@ -580,6 +580,9 @@ function renderSnapshot3M(data) {
   const snapDateEl = document.getElementById('snapDate');
   if (snapDateEl && data.date) snapDateEl.textContent = data.date;
 
+  const snapDateMobile = document.getElementById('snapDateMobile');
+  if (snapDateMobile && data.date) snapDateMobile.textContent = data.date;
+
   const totalEl = document.getElementById('snapTotalCount');
   if (totalEl) totalEl.textContent = data.total_count;
 
@@ -633,16 +636,21 @@ function applySnapshotTableFilter() {
 
   if (emptyMsg) emptyMsg.style.display = 'none';
 
-  // 6 欄位呈現：日期, 代號, 名稱, 市場, 觸發價, 關鍵價位（依用戶需求移除方向欄位）
+  // 金融 App 雙層 3 欄制：標的 (名稱 / 代號·市場), 觸發價, 關鍵價位
   tbody.innerHTML = filtered.map(s => {
     const isHigh = s.direction === '紅K';
     const priceClass = isHigh ? 'price-high' : 'price-low';
     return `
       <tr>
-        <td style="color: var(--text-secondary); font-family: var(--font-mono); font-size: 13px;">${s.date}</td>
-        <td><span class="stock-code-pill">${s.code}</span></td>
-        <td class="stock-name-cell">${s.name}</td>
-        <td><span class="stock-market-tag">${s.market}</span></td>
+        <td>
+          <div class="stock-target-cell">
+            <span class="stock-name-strong">${s.name}</span>
+            <div class="stock-sub-meta">
+              <span class="stock-code-pill">${s.code}</span>
+              <span class="stock-mkt-text">${s.market}</span>
+            </div>
+          </div>
+        </td>
         <td class="stock-price-cell ${priceClass}">${s.price}</td>
         <td class="stock-key-cell">${s.key_price}</td>
       </tr>
