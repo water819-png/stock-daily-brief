@@ -50,6 +50,11 @@
           <span>3M 新高新低</span>
           <span class="nav-tab-badge snap-tab-badge">今日快照</span>
         </button>
+        <button id="navTabDrawdown" class="nav-tab-btn" type="button">
+          <i class="fa-solid fa-chart-line-down"></i>
+          <span>高點回檔雷達</span>
+          <span class="nav-tab-badge snap-tab-badge" style="background: linear-gradient(135deg, #ef4444, #f97316) !important;">1996檔</span>
+        </button>
         <button id="navTabCalendar" class="nav-tab-btn" type="button">
           <i class="fa-solid fa-calendar-days"></i>
           <span>重大行事曆</span>
@@ -289,6 +294,28 @@
       </section>
     </div>
 
+
+    <!-- 視圖四：高點回檔重災雷達 (Drawdown Radar View) -->
+    <div id="drawdownView" class="page-view" style="display: none;">
+      <section class="drawdown-section-wrap">
+        <div class="drawdown-top-bar" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; flex-wrap: wrap; gap: 10px;">
+          <div style="font-size: 14px; color: var(--text-secondary); display: flex; align-items: center; gap: 8px;">
+            <i class="fa-solid fa-triangle-exclamation" style="color: #ef4444;"></i>
+            <span>全台股 1,996 檔上市櫃個股從近 1 個月 / 3 個月高點崩跌深度掃描</span>
+          </div>
+          <div style="display: flex; gap: 10px; align-items: center;">
+            <a href="data/market_drawdown_2026-11-05.csv" download class="btn-secondary btn-sm" style="display: inline-flex; align-items: center; gap: 6px;">
+              <i class="fa-solid fa-file-csv"></i> 下載 Excel CSV
+            </a>
+            <a href="drawdown.html" target="_blank" class="btn-primary btn-sm" style="display: inline-flex; align-items: center; gap: 6px; background: linear-gradient(135deg, #ef4444, #f97316); text-decoration: none;">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i> 全螢幕獨立開啟雷達
+            </a>
+          </div>
+        </div>
+        <iframe id="drawdownFrame" src="drawdown.html" style="width: 100%; height: 86vh; border: 1px solid var(--border-color); border-radius: var(--radius-xl); background: #090d16;" frameborder="0"></iframe>
+      </section>
+    </div>
+
   </main>
 
   <!-- 頁面底部 -->
@@ -344,6 +371,10 @@
       <button id="mTab3M" class="m-nav-btn" type="button">
         <i class="fa-solid fa-bolt"></i>
         <span>3M快照</span>
+      </button>
+      <button id="mTabDrawdown" class="m-nav-btn" type="button">
+        <i class="fa-solid fa-chart-line-down"></i>
+        <span>回檔雷達</span>
       </button>
       <button id="mTabCalendar" class="m-nav-btn" type="button">
         <i class="fa-solid fa-calendar-days"></i>

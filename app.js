@@ -539,23 +539,27 @@ function switchView(viewName) {
   const briefsView = document.getElementById('briefsView');
   const calendarView = document.getElementById('calendarView');
   const snapshot3MView = document.getElementById('snapshot3MView');
+  const drawdownView = document.getElementById('drawdownView');
 
   const navTabBriefs = document.getElementById('navTabBriefs');
   const navTab3M = document.getElementById('navTab3M');
+  const navTabDrawdown = document.getElementById('navTabDrawdown');
   const navTabCalendar = document.getElementById('navTabCalendar');
 
   const mTabBriefs = document.getElementById('mTabBriefs');
   const mTab3M = document.getElementById('mTab3M');
+  const mTabDrawdown = document.getElementById('mTabDrawdown');
   const mTabCalendar = document.getElementById('mTabCalendar');
 
   // 清除所有 Tab active 狀態
-  [navTabBriefs, navTab3M, navTabCalendar].forEach(b => b && b.classList.remove('active'));
-  [mTabBriefs, mTab3M, mTabCalendar].forEach(b => b && b.classList.remove('active'));
+  [navTabBriefs, navTab3M, navTabDrawdown, navTabCalendar].forEach(b => b && b.classList.remove('active'));
+  [mTabBriefs, mTab3M, mTabDrawdown, mTabCalendar].forEach(b => b && b.classList.remove('active'));
 
   // 隱藏所有視圖
   if (briefsView) briefsView.style.display = 'none';
   if (calendarView) calendarView.style.display = 'none';
   if (snapshot3MView) snapshot3MView.style.display = 'none';
+  if (drawdownView) drawdownView.style.display = 'none';
 
   if (viewName === 'calendar') {
     if (calendarView) calendarView.style.display = 'flex';
@@ -571,6 +575,12 @@ function switchView(viewName) {
 
     window.location.hash = '#3m';
     loadSnapshot3M();
+  } else if (viewName === 'drawdown') {
+    if (drawdownView) drawdownView.style.display = 'block';
+    if (navTabDrawdown) navTabDrawdown.classList.add('active');
+    if (mTabDrawdown) mTabDrawdown.classList.add('active');
+
+    window.location.hash = '#drawdown';
   } else {
     if (briefsView) briefsView.style.display = 'flex';
     if (navTabBriefs) navTabBriefs.classList.add('active');
@@ -888,18 +898,22 @@ function renderCalendarView(data) {
 function initNavigation() {
   const navTabBriefs = document.getElementById('navTabBriefs');
   const navTab3M = document.getElementById('navTab3M');
+  const navTabDrawdown = document.getElementById('navTabDrawdown');
   const navTabCalendar = document.getElementById('navTabCalendar');
 
   const mTabBriefs = document.getElementById('mTabBriefs');
   const mTab3M = document.getElementById('mTab3M');
+  const mTabDrawdown = document.getElementById('mTabDrawdown');
   const mTabCalendar = document.getElementById('mTabCalendar');
 
   if (navTabBriefs) navTabBriefs.addEventListener('click', () => switchView('briefs'));
   if (navTab3M) navTab3M.addEventListener('click', () => switchView('3m'));
+  if (navTabDrawdown) navTabDrawdown.addEventListener('click', () => switchView('drawdown'));
   if (navTabCalendar) navTabCalendar.addEventListener('click', () => switchView('calendar'));
 
   if (mTabBriefs) mTabBriefs.addEventListener('click', () => switchView('briefs'));
   if (mTab3M) mTab3M.addEventListener('click', () => switchView('3m'));
+  if (mTabDrawdown) mTabDrawdown.addEventListener('click', () => switchView('drawdown'));
   if (mTabCalendar) mTabCalendar.addEventListener('click', () => switchView('calendar'));
 
   // 檢查網址列 hash
@@ -907,6 +921,8 @@ function initNavigation() {
     switchView('calendar');
   } else if (window.location.hash === '#3m') {
     switchView('3m');
+  } else if (window.location.hash === '#drawdown') {
+    switchView('drawdown');
   }
 }
 
