@@ -88,29 +88,29 @@ def fetch_taifex_futures(timeout: int = 15):
         return {}
 
 def calculate_streaks(briefs, current_foreign_diff, current_trust_diff):
-    """計算外資與投信連續買/賣超天數"""
+    """計算外資與投信連續買/賣超天數（優先承接前一營業日已核實之連買/連賣天數）"""
     trust_streak = 1 if current_trust_diff > 0 else 0
     foreign_streak = 1 if current_foreign_diff < 0 else 0
 
-    for b in briefs:
-        inst = b.get("market_overview", {}).get("institutions", {})
-        t_str = inst.get("investment_trust", "")
-        f_str = inst.get("foreign", "")
+    if briefs:
+        for b in briefs:
+            if b.get("date") == datetime.now().strftime("%Y-%m-%d") and b.get("is_latest") is False:
+                pass
+            # 尋找前一個有效營業日的紀錄
+            if b.get("date") != datetime.now().strftime("%Y-%m-%d"):
+                prev_inst = b.get("market_overview", {}).get("institutions", {})
+                prev_f_txt = prev_inst.get("foreign_futures", "")
+                prev_t_txt = prev_inst.get("trust_note", "")
 
-        # 投信連買判斷
-        if trust_streak > 0:
-            if "+" in t_str:
-                trust_streak += 1
-            else:
-                pass
-        
-        # 外資連賣判斷
-        if foreign_streak > 0:
-            if "-" in f_str:
-                foreign_streak += 1
-            else:
-                pass
-                
+                f_match = re.search(r'連\s*(\d+)\s*賣', prev_f_txt)
+                t_match = re.search(r'連\s*(\d+)\s*買', prev_t_txt)
+
+                if f_match and current_foreign_diff < 0:
+                    foreign_streak = int(f_match.group(1)) + 1
+                if t_match and current_trust_diff > 0:
+                    trust_streak = int(t_match.group(1)) + 1
+                break
+
     return foreign_streak, trust_streak
 
 def fetch_market_data():
@@ -258,7 +258,7 @@ def enrich_market_overview(market_overview, briefs):
 
     # 籌碼細部小標籤
     if f_oi:
-        inst["foreign_futures"] = f"外資現貨單日再砍 {abs(foreign_raw):,.0f} 億 (連 {f_streak} 賣)，台指期淨空單 {f_oi} 口高檔警戒"
+        inst["foreign_futures"] = f"外資現貨單日再砍 {abs(foreign_raw):,.0f} 億 (連 {f_streak} 賣)，台指期淨空單 {f_oi.replace(\"-\", \"\").strip()} 口高檔警戒"
     else:
         inst["foreign_futures"] = f"外資現貨賣超 {f_val} (連 {f_streak} 賣)，期貨空單維持高水位避險"
 
