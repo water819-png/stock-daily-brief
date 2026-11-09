@@ -258,7 +258,10 @@ def enrich_market_overview(market_overview, briefs):
 
     # 籌碼細部小標籤
     if f_oi:
-        inst["foreign_futures"] = f"外資現貨單日再砍 {abs(foreign_raw):,.0f} 億 (連 {f_streak} 賣)，台指期淨空單 {f_oi.replace(\"-\", \"\").strip()} 口高檔警戒"
+        clean_f_oi = f_oi.replace("-", "").strip()
+        f_verb = "回補" if foreign_raw >= 0 else "再砍"
+        f_streak_txt = f"連 {f_streak} 買" if foreign_raw >= 0 else f"連 {f_streak} 賣"
+        inst["foreign_futures"] = f"外資現貨單日{f_verb} {abs(foreign_raw):,.0f} 億 ({f_streak_txt})，台指期淨空單 {clean_f_oi} 口高檔警戒"
     else:
         inst["foreign_futures"] = f"外資現貨賣超 {f_val} (連 {f_streak} 賣)，期貨空單維持高水位避險"
 
