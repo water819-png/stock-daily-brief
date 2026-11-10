@@ -89,27 +89,39 @@ def fetch_taifex_futures(timeout: int = 15):
 
 def calculate_streaks(briefs, current_foreign_diff, current_trust_diff):
     """計算外資與投信連續買/賣超天數（優先承接前一營業日已核實之連買/連賣天數）"""
+    today_str = datetime.now().strftime("%Y-%m-%d")
+    prev_brief = None
+    if briefs:
+        for b in briefs:
+            if b.get("date") != today_str and b.get("id") != today_str:
+                prev_brief = b
+                break
+
     trust_streak = 1 if current_trust_diff > 0 else 0
     foreign_streak = 1 if current_foreign_diff < 0 else 0
 
-    if briefs:
-        for b in briefs:
-            if b.get("date") == datetime.now().strftime("%Y-%m-%d") and b.get("is_latest") is False:
-                pass
-            # 尋找前一個有效營業日的紀錄
-            if b.get("date") != datetime.now().strftime("%Y-%m-%d"):
-                prev_inst = b.get("market_overview", {}).get("institutions", {})
-                prev_f_txt = prev_inst.get("foreign_futures", "")
-                prev_t_txt = prev_inst.get("trust_note", "")
+    if prev_brief:
+        prev_inst = prev_brief.get("market_overview", {}).get("institutions", {})
+        full_text = " ".join([
+            prev_inst.get("foreign_futures", ""),
+            prev_inst.get("trust_note", ""),
+            prev_brief.get("title", ""),
+            prev_brief.get("summary", ""),
+            " ".join(prev_brief.get("tags", []))
+        ])
 
-                f_match = re.search(r'連\s*(\d+)\s*賣', prev_f_txt)
-                t_match = re.search(r'連\s*(\d+)\s*買', prev_t_txt)
+        f_matches = re.findall(r'連(?:續第)?\s*(\d+)\s*(?:個交易日)?\s*(?:逆勢)?\s*賣', full_text)
+        t_matches = re.findall(r'連(?:續第)?\s*(\d+)\s*(?:個交易日)?\s*(?:逆勢)?\s*買', full_text)
 
-                if f_match and current_foreign_diff < 0:
-                    foreign_streak = int(f_match.group(1)) + 1
-                if t_match and current_trust_diff > 0:
-                    trust_streak = int(t_match.group(1)) + 1
-                break
+        if f_matches and current_foreign_diff < 0:
+            foreign_streak = max(int(m) for m in f_matches) + 1
+        elif not f_matches and current_foreign_diff < 0:
+            foreign_streak = 1
+
+        if t_matches and current_trust_diff > 0:
+            trust_streak = max(int(m) for m in t_matches) + 1
+        elif not t_matches and current_trust_diff > 0:
+            trust_streak = 1
 
     return foreign_streak, trust_streak
 
@@ -257,16 +269,20 @@ def enrich_market_overview(market_overview, briefs):
     t_oi = t_fut.get("net_oi", "")
 
     # 籌碼細部小標籤
+    f_streak_txt = f"連 {f_streak} 買" if foreign_raw >= 0 else f"連 {f_streak} 賣"
+    t_streak_txt = f"連 {t_streak} 買逆勢護盤" if trust_raw >= 0 else f"連 {t_streak} 賣"
+
     if f_oi:
         clean_f_oi = f_oi.replace("-", "").strip()
         f_verb = "回補" if foreign_raw >= 0 else "再砍"
-        f_streak_txt = f"連 {f_streak} 買" if foreign_raw >= 0 else f"連 {f_streak} 賣"
         inst["foreign_futures"] = f"外資現貨單日{f_verb} {abs(foreign_raw):,.0f} 億 ({f_streak_txt})，台指期淨空單 {clean_f_oi} 口高檔警戒"
     else:
-        inst["foreign_futures"] = f"外資現貨賣超 {f_val} (連 {f_streak} 賣)，期貨空單維持高水位避險"
+        f_action_str = f"買超 {f_val}" if foreign_raw >= 0 else f"賣超 {f_val}"
+        inst["foreign_futures"] = f"外資現貨{f_action_str} ({f_streak_txt})，期貨空單維持高水位避險"
 
     if t_oi:
-        inst["trust_note"] = f"投信買超 {t_val} (連 {t_streak} 買逆勢護盤)，台指期淨多單 {t_oi} 口"
+        t_verb = "買超" if trust_raw >= 0 else "賣超"
+        inst["trust_note"] = f"投信{t_verb} {t_val} ({t_streak_txt})，台指期淨多單 {t_oi} 口"
     else:
         inst["trust_note"] = f"投信買超 {t_val} 連續第 {t_streak} 個交易日買超力挺"
 
@@ -277,19 +293,25 @@ def enrich_market_overview(market_overview, briefs):
     chg_val = market_overview.get("change_val", 0.0)
     c_val = market_overview.get("close_val", 0.0)
     
-    if chg_val < -500:
-        market_overview["monthly_change"] = f"加權指數單日重挫 {abs(chg_val):,.0f} 點摜破關鍵整數關卡，爆出 {vol} 巨量，外資現貨與期貨空單全面高壓壟罩"
+    if chg_val < -1000:
+        market_overview["monthly_change"] = f"加權指數遭遇歷史級沉重賣壓狂瀉 {abs(chg_val):,.0f} 點摜破整數關卡，成交量擴大至 {vol}，空方高壓籠罩"
         lead_action = f"遭遇沈重賣壓，指數開低走低狂瀉 {abs(chg_val):,.0f} 點"
-    elif chg_val > 500:
-        market_overview["monthly_change"] = f"加權指數強勢飆漲 {chg_val:,.0f} 點收復整數關卡，多方買盤強勢表態"
+    elif chg_val < -500:
+        market_overview["monthly_change"] = f"加權指數單日重挫 {abs(chg_val):,.0f} 點失守關鍵支撐，爆出 {vol} 大量，外資現貨與期貨空單維持高壓"
+        lead_action = f"遭遇賣壓調節，指數震盪重挫 {abs(chg_val):,.0f} 點"
+    elif chg_val > 1000:
+        market_overview["monthly_change"] = f"加權指數強勢飆漲 {chg_val:,.0f} 點收復整數關卡，成交量放大至 {vol}，多方買盤強勢表態"
         lead_action = f"多方氣勢如虹，指數跳空開高強彈 {chg_val:,.0f} 點"
+    elif chg_val > 500:
+        market_overview["monthly_change"] = f"加權指數強勁反彈 {chg_val:,.0f} 點收復關鍵價位，多頭部隊積極反攻"
+        lead_action = f"多方買盤積極進駐，指數強勢大漲 {chg_val:,.0f} 點"
     else:
-        market_overview["monthly_change"] = f"全月加權指數震盪洗盤，多空於整數關卡展開激烈攻防"
+        market_overview["monthly_change"] = f"加權指數震盪洗盤，多空於關鍵整數關卡展開激烈攻防"
         lead_action = f"呈現區間震盪整理，指數終場變動 {chg}"
 
     lead_text = (
         f"今日（{month_day_str}，{weekday_str}）台股{lead_action}，終場收在 {close_idx} 點（{chg}），"
-        f"市場成交金額為 {vol}。三大法人籌碼動向方面，外資動態為 {f_val}（連 {f_streak} 賣），台指期未平倉淨空單來到 {f_oi or '高檔'} 口；"
+        f"市場成交金額為 {vol}。三大法人籌碼動向方面，外資動態為 {f_val}（{f_streak_txt}），台指期未平倉淨空單來到 {f_oi or '高檔'} 口；"
         f"投信買超 {t_val} 達成連續第 {t_streak} 個交易日逆勢護盤，自營商調節 {d_val}，三大法人合計調節 {tot_val}。"
         f"下方彙整今日外資與投信前十大核心進出個股，完整技術線型、關鍵支撐壓力與操作策略請參閱今日 VIP 報告。"
     )
@@ -307,15 +329,6 @@ def update_calendar_json(today_date: str):
             cal = json.load(f)
         
         cal["updated_at"] = today_date
-        
-        # 若當前日期已推進至 11/05，更新關卡三的戰報引導
-        for stage in cal.get("stages", []):
-            if stage.get("stage_id") == "stage-3":
-                stage["tactical_observation"] = (
-                    "【最新戰報】今晚（11/05）21:30 美國公布最新單週初領失業金人數，"
-                    "明晚（11/06）21:30 迎來重磅 10 月非農就業報告。在通膨依然具備黏性的當下，"
-                    "這份就業數據將為美國實質經濟是否陷入硬著陸給出關鍵定音，直接主導 12 月聯準會利率路徑與美債長端殖利率走向。"
-                )
         
         with open(CALENDAR_PATH, "w", encoding="utf-8") as f:
             json.dump(cal, f, ensure_ascii=False, indent=2)
@@ -397,39 +410,54 @@ def update_briefs_json(market_overview, force=False):
     c_val = market_overview.get("close_val", 0.0)
     f_streak = market_overview.get("f_streak", 1)
     t_streak = market_overview.get("t_streak", 1)
+    foreign_raw = market_overview.get("foreign_raw", 0.0)
+    trust_raw = market_overview.get("trust_raw", 0.0)
     f_val_str = market_overview.get("institutions", {}).get("foreign", "")
     vol_str = market_overview.get("volume", "")
+    round_k = int(round(c_val / 100)) * 100
 
     # 動態產生吸睛專業標題
     if chg_val < -1000:
-        action_verb = f"台股狂瀉 {abs(chg_val):,.0f} 點摜破 42,000 關卡"
+        action_verb = f"狂瀉 {abs(chg_val):,.0f} 點摜破關鍵整數關卡"
+        action_summary = f"開低走低遭遇沉重賣壓，終場狂瀉 {abs(chg_val):,.0f} 點（{market_overview.get('index_change', '')}）收在 {c_val:,.2f} 點"
     elif chg_val < -500:
         action_verb = f"重挫 {abs(chg_val):,.0f} 點失守關鍵支撐"
+        action_summary = f"開低走低震盪承壓，終場重挫 {abs(chg_val):,.0f} 點（{market_overview.get('index_change', '')}）收在 {c_val:,.2f} 點"
     elif chg_val > 1000:
-        action_verb = f"驚天狂飆 {chg_val:,.0f} 點強勢收復整數大關"
+        action_verb = f"驚天狂飆 {chg_val:,.0f} 點強勢收復 {round_k:,.0f}"
+        action_summary = f"延續強勁多頭反彈氣勢，指數跳空開高狂飆 {chg_val:,.0f} 點（{market_overview.get('index_change', '')}）收在 {c_val:,.2f} 點強勢收復 {round_k:,.0f} 關卡"
     elif chg_val > 500:
-        action_verb = f"大漲 {chg_val:,.0f} 點多頭強勢反攻"
+        action_verb = f"強彈 {chg_val:,.0f} 點多頭持續反攻"
+        action_summary = f"多方買盤積極進駐，指數強彈 {chg_val:,.0f} 點（{market_overview.get('index_change', '')}）收在 {c_val:,.2f} 點"
     else:
-        action_verb = f"震盪收 {c_val:,.0f} 點"
+        action_verb = f"區間震盪收 {c_val:,.0f} 點"
+        action_summary = f"呈現高檔震盪整理，終場指數變動 {market_overview.get('index_change', '')} 收在 {c_val:,.2f} 點"
 
-    today_title = f"{dt_obj.strftime('%m%d')} 盤後快訊 - {action_verb}！外資砍 {f_val_str.replace('+', '').replace('-', '')}、投信連 {t_streak} 買力挺"
+    f_title_act = f"外資賣超 {abs(foreign_raw):,.0f} 億" if foreign_raw < 0 else f"外資買超 {abs(foreign_raw):,.0f} 億"
+    t_title_act = f"投信連 {t_streak} 買力挺" if trust_raw > 0 else f"投信賣超 {abs(trust_raw):,.0f} 億"
+
+    today_title = f"{dt_obj.strftime('%m%d')} 盤後快訊 - 【魔球 VIP 戰情室】{action_verb}！{f_title_act}、{t_title_act}"
+
+    f_action_summary = f"外資現貨續賣 {abs(foreign_raw):,.2f} 億元（連 {f_streak} 賣）" if foreign_raw < 0 else f"外資現貨買超 {abs(foreign_raw):,.2f} 億元（連 {f_streak} 買）"
+    clean_f_oi = market_overview.get('futures_data', {}).get('foreign', {}).get('net_oi', '高檔').replace('-', '').strip()
+    clean_f_oi_num = clean_f_oi.replace(',', '')
+    oi_tag_str = f"期貨空單{round(int(clean_f_oi_num)/10000)}萬口" if clean_f_oi_num.isdigit() else "期貨空單高檔"
 
     summary_text = (
-        f"今日台股開低走低，終場狂瀉 {abs(chg_val):,.0f} 點（{market_overview.get('index_change', '')}）收在 {c_val:,.2f} 點摜破 42,000 大關，"
-        f"成交金額放大至 {vol_str} 巨量。權值股承壓，外資現貨再砍 {f_val_str.replace('-', '')}（連 {f_streak} 賣），"
-        f"台指期淨空單攀升至 {market_overview.get('futures_data', {}).get('foreign', {}).get('net_oi', '高檔')} 口歷史警戒；"
-        f"投信買超 {market_overview.get('institutions', {}).get('investment_trust', '')} 達成連 {t_streak} 買力挺護盤。"
-        f"今晚聚焦美國初領失業金人數，明晚迎戰 10 月非農就業定音。"
+        f"台股今日{action_summary}，成交金額放大至 {vol_str} 巨量。三大法人籌碼動向方面，{f_action_summary}，"
+        f"台指期淨空單維持在 {clean_f_oi} 口高檔警戒；投信加碼買超 {market_overview.get('institutions', {}).get('investment_trust', '')} 達成連 {t_streak} 買護盤新猷。"
+        f"今日全體上市櫃 10 月營收公告底定，今晚留意 Fed 官員最新談話，本週重頭戲聚焦週四美 10 月 CPI 通膨與鴻海法說會。完整多空關鍵價位、個股支撐壓力與戰術布局請詳閱 VIP 戰略報告。"
     )
 
     tags = [
         "大盤解析",
-        f"狂瀉{abs(chg_val):,.0f}點" if chg_val < 0 else f"大漲{chg_val:,.0f}點",
-        "失守42000" if c_val < 42000 else "守穩42000",
-        f"外資連{f_streak}賣",
-        f"投信連{t_streak}買",
-        "期貨空單9.5萬口",
-        "聚焦非農與失業金"
+        f"強彈{chg_val:,.0f}點" if chg_val > 0 else f"狂瀉{abs(chg_val):,.0f}點",
+        f"收復{round_k}" if chg_val > 0 else f"失守{round_k}",
+        f"外資連{f_streak}賣" if foreign_raw < 0 else f"外資連{f_streak}買",
+        f"投信連{t_streak}買" if trust_raw > 0 else f"投信連{t_streak}賣",
+        oi_tag_str,
+        "10月營收底定",
+        "魔球VIP戰情室"
     ]
 
     for b in briefs:
