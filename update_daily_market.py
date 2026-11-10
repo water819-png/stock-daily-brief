@@ -508,6 +508,20 @@ def update_briefs_json(market_overview, force=False):
     # 同步更新行事曆
     update_calendar_json(today_date)
     sync_snapshot_3m(today_date)
+
+    # 自動 git add / commit / push 推送至 GitHub 與 Vercel 雲端
+    try:
+        import subprocess
+        subprocess.run(["git", "add", "data/briefs.json", "data/calendar.json", "data/snapshot_3m.json"], cwd=str(BASE_DIR), capture_output=True, text=True, check=False)
+        subprocess.run(["git", "commit", "-m", f"feat: auto-sync daily brief and 3m snapshot for {today_date}"], cwd=str(BASE_DIR), capture_output=True, text=True, check=False)
+        push_res = subprocess.run(["git", "push", "origin", "main"], cwd=str(BASE_DIR), capture_output=True, text=True, check=False)
+        if push_res.returncode == 0:
+            print("🚀 已自動推播盤後快訊與 3M 快照至 GitHub / Vercel 雲端上架！")
+        else:
+            print(f"ℹ️ Git push 狀態: {push_res.stderr.strip() or push_res.stdout.strip()}")
+    except Exception as e:
+        print(f"⚠️ 自動推送至 Vercel 異常: {e}")
+
     return True
 
 def main():
