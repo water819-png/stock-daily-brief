@@ -38,6 +38,21 @@ function renderHeroCard(item) {
   document.getElementById('heroDate').textContent = item.display_date || item.date;
   document.getElementById('heroTitle').textContent = item.title;
   document.getElementById('heroDesc').textContent = item.summary || '今日台股最新關鍵價位與進出場策略。';
+
+  // 更新當日報告防禦現金水位膠囊
+  const cashPill = document.getElementById('heroCashPill');
+  if (cashPill) {
+    if (item.cash_level) {
+      const tier = item.cash_level_tier || 'mid';
+      const iconMap = { high: '🔴', mid: '🟡', low: '🟢' };
+      document.getElementById('heroCashIcon').textContent = iconMap[tier] || '🛡️';
+      document.getElementById('heroCashValue').textContent = item.cash_level;
+      cashPill.className = `hero-cash-pill cash-${tier}`;
+      cashPill.style.display = 'inline-flex';
+    } else {
+      cashPill.style.display = 'none';
+    }
+  }
   
   // 更新 Google Doc 連結
   const btnOpen = document.getElementById('btnOpenDoc');
