@@ -240,6 +240,21 @@ def fetch_market_data():
     except Exception as e:
         print(f"⚠️ 個股三大法人排行抓取異常: {e}")
 
+    # 5. 上市＋上櫃每日融資融券餘額 (通常 20:30～21:30 公布，若未公布自動帶入最近已公布日)
+    print("[5/5] 抓取上市＋上櫃每日融資融券餘額...")
+    try:
+        root_dir = str(BASE_DIR.parent)
+        if root_dir not in sys.path:
+            sys.path.insert(0, root_dir)
+        from margin_balance_fetcher import fetch_margin_balance
+        trade_iso_m = tw_date_to_iso(market_overview.get("raw_tw_date", ""))
+        m_data = fetch_margin_balance(target_date=trade_iso_m, save=True)
+        if m_data.get("ok"):
+            market_overview["margin_data"] = m_data
+            print(f"  -> {m_data.get('summary_text')}")
+    except Exception as e:
+        print(f"⚠️ 融資融券餘額抓取略過: {e}")
+
     return market_overview
 
 def enrich_market_overview(market_overview, briefs):

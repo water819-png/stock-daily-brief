@@ -142,6 +142,57 @@ function renderHeroCard(item) {
   }
 }
 
+// 渲染上市＋上櫃每日融資融券籌碼看板
+function renderMarginCardsHtml(md) {
+  if (!md || !md.ok || !md.twse) return '';
+  const tw = md.twse || {};
+  const tp = md.tpex || {};
+  const comb = md.combined || {};
+  const fmtDiff = (v, unit = '億') => {
+    if (v === undefined || v === null) return '--';
+    const num = Number(v);
+    const sign = num > 0 ? '+' : '';
+    return `${sign}${num.toLocaleString('zh-TW', { minimumFractionDigits: unit === '億' ? 2 : 0, maximumFractionDigits: unit === '億' ? 2 : 0 })} ${unit}`;
+  };
+  const clsOf = (v) => (Number(v) >= 0 ? 'buy' : 'sell');
+  const twBal = tw.margin_balance_yi !== undefined ? `${Number(tw.margin_balance_yi).toLocaleString('zh-TW', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} 億` : '--';
+  const tpBal = tp.margin_balance_yi !== undefined ? `${Number(tp.margin_balance_yi).toLocaleString('zh-TW', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} 億` : '--';
+  const combBal = comb.margin_balance_yi !== undefined ? `${Number(comb.margin_balance_yi).toLocaleString('zh-TW', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} 億` : '--';
+  const shortLots = tw.short_lots !== undefined ? `${Number(tw.short_lots).toLocaleString('zh-TW')} 張` : '--';
+  const dateBadge = md.status_note || `${md.mmdd || md.date || ''} 信用交易統計`;
+
+  return `
+    <div class="margin-section-wrap">
+      <div class="margin-section-header">
+        <span><i class="fa-solid fa-scale-unbalanced" style="color: #fbbf24; margin-right: 6px;"></i>信用交易籌碼（融資融券餘額與單日增減）</span>
+        <span class="margin-date-tag">${dateBadge}</span>
+      </div>
+      <div class="inst-cards-row">
+        <div class="inst-pill margin-pill">
+          <div class="inst-name">上市融資單日增減</div>
+          <div class="inst-val ${clsOf(tw.margin_diff_yi)}">${fmtDiff(tw.margin_diff_yi, '億')}</div>
+          <div class="inst-sub">上市融資餘額 ${twBal}</div>
+        </div>
+        <div class="inst-pill margin-pill">
+          <div class="inst-name">上櫃融資單日增減</div>
+          <div class="inst-val ${clsOf(tp.margin_diff_yi)}">${tp.margin_diff_yi !== undefined ? fmtDiff(tp.margin_diff_yi, '億') : '--'}</div>
+          <div class="inst-sub">上櫃融資餘額 ${tpBal}</div>
+        </div>
+        <div class="inst-pill margin-pill">
+          <div class="inst-name">全市場融資合計增減</div>
+          <div class="inst-val ${clsOf(comb.margin_diff_yi)}">${fmtDiff(comb.margin_diff_yi, '億')}</div>
+          <div class="inst-sub">上市櫃總餘額 ${combBal}</div>
+        </div>
+        <div class="inst-pill margin-pill">
+          <div class="inst-name">上市融券單日增減</div>
+          <div class="inst-val ${clsOf(tw.short_lots_diff)}">${fmtDiff(tw.short_lots_diff, '張')}</div>
+          <div class="inst-sub">上市融券餘額 ${shortLots}</div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
 // 渲染大盤行情與籌碼 TOP10 面板
 function renderMarketOverview(container, m) {
   const inst = m.institutions || {};
@@ -200,6 +251,8 @@ function renderMarketOverview(container, m) {
         <div class="inst-sub">${inst.total_note || '三大法人合計動向'}</div>
       </div>
     </div>
+
+    ${renderMarginCardsHtml(m.margin_data)}
 
     <!-- 外資與投信 TOP10 買賣超榜單 -->
     <div class="top10-ranking-grid">

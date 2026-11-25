@@ -434,6 +434,42 @@ body {
   line-height: 1.3;
 }
 
+/* 融資融券籌碼區塊 */
+.margin-section-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  background: rgba(251, 191, 36, 0.04);
+  border: 1px solid rgba(251, 191, 36, 0.16);
+}
+
+.margin-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #fde68a;
+}
+
+.margin-date-tag {
+  font-size: 11px;
+  font-weight: 500;
+  color: #94a3b8;
+  background: rgba(15, 23, 42, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+
+.margin-pill {
+  background: rgba(15, 23, 42, 0.45);
+}
+
 /* 外資 / 投信買賣超 TOP10 雙欄面板 */
 .top10-ranking-grid {
   display: grid;
