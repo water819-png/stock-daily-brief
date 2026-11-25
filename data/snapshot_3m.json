@@ -1,143 +1,53 @@
 {
-  "date": "2026-11-24",
-  "total_count": 40,
-  "high_count": 18,
-  "low_count": 22,
+  "date": "2026-11-25",
+  "total_count": 253,
+  "high_count": 6,
+  "low_count": 247,
   "stocks": [
     {
-      "date": "2026-11-24",
-      "code": "1341",
-      "name": "富林-KY",
-      "market": "上市",
-      "direction": "紅K",
-      "price": "62.0",
-      "key_price": "60.3"
-    },
-    {
-      "date": "2026-11-24",
-      "code": "1470",
-      "name": "大統新創",
-      "market": "上市",
-      "direction": "紅K",
-      "price": "25.7",
-      "key_price": "25.2"
-    },
-    {
-      "date": "2026-11-24",
+      "date": "2026-11-25",
       "code": "2597",
       "name": "潤弘",
       "market": "上市",
       "direction": "紅K",
-      "price": "192.0",
-      "key_price": "177.5"
+      "price": "193.0",
+      "key_price": "192.0"
     },
     {
-      "date": "2026-11-24",
-      "code": "2618",
-      "name": "長榮航",
+      "date": "2026-11-25",
+      "code": "6614",
+      "name": "資拓宏宇",
       "market": "上市",
       "direction": "紅K",
-      "price": "48.6",
-      "key_price": "48.1"
+      "price": "46.8",
+      "key_price": "44.75"
     },
     {
-      "date": "2026-11-24",
-      "code": "6782",
-      "name": "視陽",
+      "date": "2026-11-25",
+      "code": "7765",
+      "name": "中華資安",
       "market": "上市",
       "direction": "紅K",
-      "price": "292.5",
-      "key_price": "290.5"
+      "price": "311.0",
+      "key_price": "296.0"
     },
     {
-      "date": "2026-11-24",
-      "code": "7736",
-      "name": "虎山",
-      "market": "上市",
-      "direction": "紅K",
-      "price": "75.5",
-      "key_price": "72.6"
-    },
-    {
-      "date": "2026-11-24",
-      "code": "1259",
-      "name": "安心",
+      "date": "2026-11-25",
+      "code": "3285",
+      "name": "微端",
       "market": "上櫃",
       "direction": "紅K",
-      "price": "70.1",
-      "key_price": "69.0"
+      "price": "55.7",
+      "key_price": "55.4"
     },
     {
-      "date": "2026-11-24",
-      "code": "2063",
-      "name": "世鎧",
+      "date": "2026-11-25",
+      "code": "6590",
+      "name": "普鴻",
       "market": "上櫃",
       "direction": "紅K",
-      "price": "22.4",
-      "key_price": "22.3"
-    },
-    {
-      "date": "2026-11-24",
-      "code": "2756",
-      "name": "聯發國際",
-      "market": "上櫃",
-      "direction": "紅K",
-      "price": "66.0",
-      "key_price": "65.0"
-    },
-    {
-      "date": "2026-11-24",
-      "code": "4502",
-      "name": "健信",
-      "market": "上櫃",
-      "direction": "紅K",
-      "price": "16.0",
-      "key_price": "15.95"
-    },
-    {
-      "date": "2026-11-24",
-      "code": "5457",
-      "name": "宣德",
-      "market": "上櫃",
-      "direction": "紅K",
-      "price": "28.7",
-      "key_price": "28.0"
-    },
-    {
-      "date": "2026-11-24",
-      "code": "5478",
-      "name": "智冠",
-      "market": "上櫃",
-      "direction": "紅K",
-      "price": "99.1",
-      "key_price": "99.0"
-    },
-    {
-      "date": "2026-11-24",
-      "code": "5601",
-      "name": "台聯櫃",
-      "market": "上櫃",
-      "direction": "紅K",
-      "price": "33.3",
-      "key_price": "33.2"
-    },
-    {
-      "date": "2026-11-24",
-      "code": "5903",
-      "name": "全家",
-      "market": "上櫃",
-      "direction": "紅K",
-      "price": "188.5",
-      "key_price": "187.0"
-    },
-    {
-      "date": "2026-11-24",
-      "code": "6199",
-      "name": "天品",
-      "market": "上櫃",
-      "direction": "紅K",
-      "price": "173.0",
-      "key_price": "172.5"
+      "price": "92.0",
+      "key_price": "90.3"
     },
     {
       "date": "2026-11-24",
@@ -149,22 +59,211 @@
       "key_price": "128.0"
     },
     {
-      "date": "2026-11-24",
-      "code": "8423",
-      "name": "保綠-KY",
-      "market": "上櫃",
-      "direction": "紅K",
-      "price": "18.65",
-      "key_price": "18.55"
+      "date": "2026-11-25",
+      "code": "1110",
+      "name": "東泥",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "13.4",
+      "key_price": "13.5"
     },
     {
-      "date": "2026-11-24",
-      "code": "8450",
-      "name": "霹靂",
-      "market": "上櫃",
-      "direction": "紅K",
-      "price": "14.9",
-      "key_price": "14.7"
+      "date": "2026-11-25",
+      "code": "1203",
+      "name": "味王",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "39.3",
+      "key_price": "41.35"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "1225",
+      "name": "福懋油",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "21.6",
+      "key_price": "22.55"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "1233",
+      "name": "天仁",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "27.4",
+      "key_price": "27.45"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "1234",
+      "name": "黑松",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "29.8",
+      "key_price": "30.0"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "1235",
+      "name": "興泰",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "29.0",
+      "key_price": "29.9"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "1304",
+      "name": "台聚",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "9.66",
+      "key_price": "9.82"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "1308",
+      "name": "亞聚",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "10.9",
+      "key_price": "11.15"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "1309",
+      "name": "台達化",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "9.75",
+      "key_price": "9.85"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "1310",
+      "name": "台苯",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "6.68",
+      "key_price": "6.75"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "1312",
+      "name": "國喬",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "9.87",
+      "key_price": "10.0"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "1321",
+      "name": "大洋",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "30.45",
+      "key_price": "30.7"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "1338",
+      "name": "廣華-KY",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "12.3",
+      "key_price": "12.5"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "1340",
+      "name": "勝悅-KY",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "4.0",
+      "key_price": "4.08"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "1413",
+      "name": "宏洲",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "8.69",
+      "key_price": "8.86"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "1417",
+      "name": "嘉裕",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "7.2",
+      "key_price": "7.32"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "1452",
+      "name": "宏益",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "9.99",
+      "key_price": "10.0"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "1457",
+      "name": "宜進",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "12.55",
+      "key_price": "12.7"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "1473",
+      "name": "台南",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "15.0",
+      "key_price": "15.2"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "1506",
+      "name": "正道",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "7.78",
+      "key_price": "7.83"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "1516",
+      "name": "川飛",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "15.2",
+      "key_price": "15.5"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "1531",
+      "name": "高林股",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "9.8",
+      "key_price": "9.83"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "1535",
+      "name": "中宇",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "41.3",
+      "key_price": "41.4"
     },
     {
       "date": "2026-11-24",
@@ -176,121 +275,1111 @@
       "key_price": "7.24"
     },
     {
-      "date": "2026-11-24",
+      "date": "2026-11-25",
+      "code": "1563",
+      "name": "巧新",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "49.3",
+      "key_price": "49.6"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "1583",
+      "name": "程泰",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "40.45",
+      "key_price": "41.3"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "1623",
+      "name": "大東電",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "125.0",
+      "key_price": "125.5"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "1626",
+      "name": "艾美特-KY",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "8.9",
+      "key_price": "8.95"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "1718",
+      "name": "中纖",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "7.61",
+      "key_price": "7.64"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "1721",
+      "name": "國慶科技",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "14.05",
+      "key_price": "14.35"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "1726",
+      "name": "永記",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "73.3",
+      "key_price": "73.4"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "1795",
+      "name": "美時",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "99.0",
+      "key_price": "99.3"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "1808",
+      "name": "潤隆",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "33.35",
+      "key_price": "34.85"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "1903",
+      "name": "士紙",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "40.0",
+      "key_price": "40.65"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "1906",
+      "name": "寶隆",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "8.9",
+      "key_price": "8.98"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "2013",
+      "name": "中鋼構",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "38.2",
+      "key_price": "38.5"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "2014",
+      "name": "中鴻",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "12.95",
+      "key_price": "13.0"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "2025",
+      "name": "千興",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "9.14",
+      "key_price": "9.38"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "2028",
+      "name": "威致",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "13.3",
+      "key_price": "13.4"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "2038",
+      "name": "海光",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "9.25",
+      "key_price": "9.49"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "2103",
+      "name": "台橡",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "19.7",
+      "key_price": "20.1"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "2104",
+      "name": "國際中橡",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "8.8",
+      "key_price": "8.9"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "2227",
+      "name": "裕日車",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "33.5",
+      "key_price": "35.5"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "2241",
+      "name": "艾姆勒",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "25.7",
+      "key_price": "25.9"
+    },
+    {
+      "date": "2026-11-25",
       "code": "2314",
       "name": "台揚",
       "market": "上市",
       "direction": "黑K",
-      "price": "2.61",
-      "key_price": "2.89"
+      "price": "2.35",
+      "key_price": "2.61"
     },
     {
-      "date": "2026-11-24",
+      "date": "2026-11-25",
+      "code": "2324",
+      "name": "仁寶",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "25.05",
+      "key_price": "25.1"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "2340",
+      "name": "台亞",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "28.7",
+      "key_price": "28.8"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "2354",
+      "name": "鴻準",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "44.8",
+      "key_price": "45.05"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "2380",
+      "name": "虹光",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "10.85",
+      "key_price": "11.35"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "2431",
+      "name": "聯昌",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "7.89",
+      "key_price": "7.94"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "2458",
+      "name": "義隆",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "103.5",
+      "key_price": "104.0"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "2514",
+      "name": "龍邦",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "9.33",
+      "key_price": "9.54"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "2537",
+      "name": "聯上發",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "9.78",
+      "key_price": "10.05"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "2616",
+      "name": "山隆",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "10.4",
+      "key_price": "10.7"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "2722",
+      "name": "夏都",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "16.8",
+      "key_price": "17.15"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "2723",
+      "name": "美食-KY",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "63.1",
+      "key_price": "63.6"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "2748",
+      "name": "雲品",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "32.0",
+      "key_price": "32.2"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "2904",
+      "name": "匯僑",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "11.05",
+      "key_price": "11.2"
+    },
+    {
+      "date": "2026-11-25",
       "code": "2945",
       "name": "三商家購",
       "market": "上市",
       "direction": "黑K",
-      "price": "36.4",
-      "key_price": "36.45"
+      "price": "35.05",
+      "key_price": "36.4"
     },
     {
-      "date": "2026-11-24",
+      "date": "2026-11-25",
+      "code": "3002",
+      "name": "歐格",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "14.4",
+      "key_price": "14.5"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "3003",
+      "name": "健和興",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "41.9",
+      "key_price": "42.0"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "3006",
+      "name": "晶豪科",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "171.5",
+      "key_price": "175.0"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "3016",
+      "name": "嘉晶",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "83.7",
+      "key_price": "84.5"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "3027",
+      "name": "盛達",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "12.6",
+      "key_price": "12.7"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "3036",
+      "name": "文曄",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "159.0",
+      "key_price": "161.5"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "3040",
+      "name": "遠見",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "21.45",
+      "key_price": "21.75"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "3092",
+      "name": "鴻碩",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "13.9",
+      "key_price": "14.0"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "3150",
+      "name": "鈺寶-創",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "10.75",
+      "key_price": "10.9"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "3443",
+      "name": "創意",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "5070.0",
+      "key_price": "5120.0"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "3535",
+      "name": "晶彩科",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "53.3",
+      "key_price": "53.5"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "3576",
+      "name": "聯合再生",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "12.85",
+      "key_price": "13.45"
+    },
+    {
+      "date": "2026-11-25",
       "code": "3593",
       "name": "力銘",
       "market": "上市",
       "direction": "黑K",
-      "price": "5.66",
-      "key_price": "6.28"
-    },
-    {
-      "date": "2026-11-24",
-      "code": "4943",
-      "name": "康控-KY",
-      "market": "上市",
-      "direction": "黑K",
-      "price": "5.51",
+      "price": "5.1",
       "key_price": "5.66"
     },
     {
-      "date": "2026-11-24",
+      "date": "2026-11-25",
+      "code": "3607",
+      "name": "谷崧",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "10.15",
+      "key_price": "10.2"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "3702",
+      "name": "大聯大",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "73.9",
+      "key_price": "75.3"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "3714",
+      "name": "富采",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "68.0",
+      "key_price": "68.6"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "4133",
+      "name": "亞諾法",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "17.35",
+      "key_price": "17.5"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "4178",
+      "name": "永笙-KY",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "12.25",
+      "key_price": "12.75"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "4190",
+      "name": "佐登-KY",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "21.65",
+      "key_price": "21.75"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "4195",
+      "name": "基米-創",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "10.95",
+      "key_price": "11.35"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "4439",
+      "name": "冠星-KY",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "89.8",
+      "key_price": "90.0"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "4545",
+      "name": "銘鈺",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "31.05",
+      "key_price": "31.4"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "4552",
+      "name": "力達-KY",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "11.05",
+      "key_price": "11.2"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "4582",
+      "name": "聚恆-創",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "15.75",
+      "key_price": "16.15"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "4590",
+      "name": "富田-創",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "59.4",
+      "key_price": "59.6"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "4764",
+      "name": "雙鍵",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "84.3",
+      "key_price": "85.1"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "4916",
+      "name": "事欣科",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "82.7",
+      "key_price": "82.8"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "4935",
+      "name": "茂林-KY",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "25.3",
+      "key_price": "25.95"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "5225",
+      "name": "東科-KY",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "35.9",
+      "key_price": "35.95"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "5288",
+      "name": "豐祥-KY",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "146.5",
+      "key_price": "147.0"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "5538",
+      "name": "東明-KY",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "31.6",
+      "key_price": "32.5"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "5906",
+      "name": "台南-KY",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "30.3",
+      "key_price": "32.4"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "6230",
+      "name": "尼得科超眾",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "76.0",
+      "key_price": "76.2"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "6283",
+      "name": "淳安",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "14.1",
+      "key_price": "14.45"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "6443",
+      "name": "元晶",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "22.3",
+      "key_price": "22.5"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "6446",
+      "name": "藥華藥",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "1075.0",
+      "key_price": "1100.0"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "6456",
+      "name": "GIS-KY",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "58.4",
+      "key_price": "61.6"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "6472",
+      "name": "保瑞",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "270.5",
+      "key_price": "272.5"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "6534",
+      "name": "正瀚-創",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "79.6",
+      "key_price": "81.4"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "6581",
+      "name": "鋼聯",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "106.0",
+      "key_price": "107.0"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "6582",
+      "name": "申豐",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "28.0",
+      "key_price": "28.1"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "6606",
+      "name": "建德工業",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "22.0",
+      "key_price": "22.1"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "6625",
+      "name": "必應",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "63.1",
+      "key_price": "63.7"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "6666",
+      "name": "羅麗芬-KY",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "39.5",
+      "key_price": "39.55"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "6715",
+      "name": "嘉基",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "273.5",
+      "key_price": "274.0"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "6756",
+      "name": "威鋒電子",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "85.2",
+      "key_price": "86.0"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "6794",
+      "name": "向榮生技",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "63.6",
+      "key_price": "64.5"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "6835",
+      "name": "圓裕",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "27.1",
+      "key_price": "27.85"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "6887",
+      "name": "寶綠特-KY",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "22.3",
+      "key_price": "23.2"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "6918",
+      "name": "愛派司",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "69.1",
+      "key_price": "70.7"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "6928",
+      "name": "攸泰科技",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "39.5",
+      "key_price": "39.9"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "6934",
+      "name": "心誠鎂",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "69.3",
+      "key_price": "70.5"
+    },
+    {
+      "date": "2026-11-25",
       "code": "6958",
       "name": "日盛台駿",
       "market": "上市",
       "direction": "黑K",
-      "price": "14.15",
-      "key_price": "14.2"
+      "price": "13.9",
+      "key_price": "14.15"
     },
     {
-      "date": "2026-11-24",
-      "code": "7823",
-      "name": "奧義賽博-KY創",
+      "date": "2026-11-25",
+      "code": "6988",
+      "name": "威力暘-創",
       "market": "上市",
       "direction": "黑K",
-      "price": "64.9",
-      "key_price": "65.0"
-    },
-    {
-      "date": "2026-11-24",
-      "code": "7827",
-      "name": "漢康-KY創",
-      "market": "上市",
-      "direction": "黑K",
-      "price": "78.8",
-      "key_price": "87.5"
-    },
-    {
-      "date": "2026-11-24",
-      "code": "8411",
-      "name": "福貞-KY",
-      "market": "上市",
-      "direction": "黑K",
-      "price": "9.98",
+      "price": "9.63",
       "key_price": "10.0"
     },
     {
-      "date": "2026-11-24",
+      "date": "2026-11-25",
+      "code": "7631",
+      "name": "聚賢研發-創",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "92.7",
+      "key_price": "93.5"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "7705",
+      "name": "三商餐飲",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "26.9",
+      "key_price": "26.95"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "7732",
+      "name": "金興精密",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "28.45",
+      "key_price": "29.35"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "7791",
+      "name": "皇家可口",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "44.2",
+      "key_price": "44.5"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "7812",
+      "name": "稜研科技*-創",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "38.3",
+      "key_price": "38.55"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "7818",
+      "name": "溢泰實業",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "50.9",
+      "key_price": "51.0"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "7835",
+      "name": "永悅健康-創",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "11.45",
+      "key_price": "12.3"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "8016",
+      "name": "矽創",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "226.5",
+      "key_price": "237.5"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "8021",
+      "name": "尖點",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "244.5",
+      "key_price": "247.0"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "8033",
+      "name": "雷虎",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "106.5",
+      "key_price": "110.5"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "8101",
+      "name": "華冠",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "8.38",
+      "key_price": "8.55"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "8443",
+      "name": "阿瘦",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "9.6",
+      "key_price": "9.65"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "8476",
+      "name": "台境*",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "15.1",
+      "key_price": "15.5"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "8481",
+      "name": "政伸",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "39.55",
+      "key_price": "39.75"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "8482",
+      "name": "商億-KY",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "43.4",
+      "key_price": "44.75"
+    },
+    {
+      "date": "2026-11-25",
       "code": "8488",
       "name": "吉源-KY",
       "market": "上市",
       "direction": "黑K",
-      "price": "6.74",
-      "key_price": "6.75"
+      "price": "6.7",
+      "key_price": "6.74"
     },
     {
-      "date": "2026-11-24",
+      "date": "2026-11-25",
+      "code": "8499",
+      "name": "鼎炫-KY",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "154.5",
+      "key_price": "156.0"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "8940",
+      "name": "新天地",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "12.25",
+      "key_price": "12.6"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "9905",
+      "name": "大華",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "20.05",
+      "key_price": "20.15"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "9906",
+      "name": "欣巴巴",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "30.25",
+      "key_price": "30.85"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "9918",
+      "name": "欣天然",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "40.5",
+      "key_price": "40.6"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "9927",
+      "name": "泰銘",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "49.85",
+      "key_price": "50.5"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "9928",
+      "name": "中視",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "14.7",
+      "key_price": "15.0"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "9946",
+      "name": "三發地產",
+      "market": "上市",
+      "direction": "黑K",
+      "price": "12.9",
+      "key_price": "13.05"
+    },
+    {
+      "date": "2026-11-25",
       "code": "1586",
       "name": "和勤",
       "market": "上櫃",
       "direction": "黑K",
-      "price": "16.9",
-      "key_price": "17.0"
+      "price": "16.6",
+      "key_price": "16.9"
     },
     {
-      "date": "2026-11-24",
+      "date": "2026-11-25",
+      "code": "1796",
+      "name": "金穎生技",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "23.25",
+      "key_price": "23.95"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "1799",
+      "name": "易威",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "21.0",
+      "key_price": "21.3"
+    },
+    {
+      "date": "2026-11-25",
       "code": "2067",
       "name": "嘉鋼",
       "market": "上櫃",
       "direction": "黑K",
-      "price": "3.2",
-      "key_price": "3.45"
+      "price": "2.99",
+      "key_price": "3.2"
     },
     {
-      "date": "2026-11-24",
+      "date": "2026-11-25",
+      "code": "2230",
+      "name": "泰茂",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "15.0",
+      "key_price": "15.4"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "2726",
+      "name": "雅茗-KY",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "3.4",
+      "key_price": "3.47"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "2736",
+      "name": "富野",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "8.7",
+      "key_price": "8.73"
+    },
+    {
+      "date": "2026-11-25",
       "code": "2755",
       "name": "揚秦",
       "market": "上櫃",
       "direction": "黑K",
-      "price": "77.8",
-      "key_price": "78.4"
+      "price": "77.1",
+      "key_price": "77.8"
     },
     {
-      "date": "2026-11-24",
+      "date": "2026-11-25",
       "code": "2926",
       "name": "誠品生活",
       "market": "上櫃",
       "direction": "黑K",
-      "price": "28.0",
-      "key_price": "28.1"
+      "price": "27.25",
+      "key_price": "28.0"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "2947",
+      "name": "振宇五金",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "49.5",
+      "key_price": "51.2"
     },
     {
       "date": "2026-11-24",
@@ -302,67 +1391,895 @@
       "key_price": "13.0"
     },
     {
-      "date": "2026-11-24",
+      "date": "2026-11-25",
+      "code": "3095",
+      "name": "及成",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "23.8",
+      "key_price": "25.3"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "3162",
+      "name": "精確",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "47.7",
+      "key_price": "48.45"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "3224",
+      "name": "三顧",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "27.4",
+      "key_price": "27.55"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "3226",
+      "name": "龍鋒",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "45.0",
+      "key_price": "45.15"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "3232",
+      "name": "昱捷",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "17.0",
+      "key_price": "17.45"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "3252",
+      "name": "海灣",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "13.6",
+      "key_price": "14.55"
+    },
+    {
+      "date": "2026-11-25",
       "code": "3259",
       "name": "鑫創",
       "market": "上櫃",
       "direction": "黑K",
-      "price": "6.26",
-      "key_price": "6.95"
+      "price": "5.64",
+      "key_price": "6.26"
     },
     {
-      "date": "2026-11-24",
+      "date": "2026-11-25",
+      "code": "3276",
+      "name": "宇環",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "11.8",
+      "key_price": "12.3"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "3294",
+      "name": "英濟",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "21.45",
+      "key_price": "21.55"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "3339",
+      "name": "泰谷",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "25.9",
+      "key_price": "25.95"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "3362",
+      "name": "先進光",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "85.0",
+      "key_price": "85.7"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "3363",
+      "name": "上詮",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "245.0",
+      "key_price": "247.5"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "3373",
+      "name": "熱映",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "15.5",
+      "key_price": "15.65"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "3379",
+      "name": "彬台",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "23.35",
+      "key_price": "23.55"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "3434",
+      "name": "哲固",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "27.65",
+      "key_price": "27.8"
+    },
+    {
+      "date": "2026-11-25",
       "code": "3465",
       "name": "進泰電子",
       "market": "上櫃",
       "direction": "黑K",
-      "price": "23.15",
-      "key_price": "25.0"
+      "price": "21.3",
+      "key_price": "23.15"
     },
     {
-      "date": "2026-11-24",
-      "code": "3629",
-      "name": "地心引力",
+      "date": "2026-11-25",
+      "code": "3498",
+      "name": "陽程",
       "market": "上櫃",
       "direction": "黑K",
-      "price": "10.1",
-      "key_price": "10.95"
+      "price": "129.0",
+      "key_price": "130.0"
     },
     {
-      "date": "2026-11-24",
-      "code": "4728",
-      "name": "雙美",
+      "date": "2026-11-25",
+      "code": "3499",
+      "name": "環天科",
       "market": "上櫃",
       "direction": "黑K",
-      "price": "372.5",
-      "key_price": "379.0"
+      "price": "9.63",
+      "key_price": "10.0"
     },
     {
-      "date": "2026-11-23",
-      "code": "5703",
-      "name": "亞都",
+      "date": "2026-11-25",
+      "code": "3546",
+      "name": "宇峻",
       "market": "上櫃",
       "direction": "黑K",
-      "price": "11.95",
-      "key_price": "12.8"
+      "price": "68.7",
+      "key_price": "69.1"
     },
     {
-      "date": "2026-11-24",
+      "date": "2026-11-25",
+      "code": "3625",
+      "name": "西勝",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "13.5",
+      "key_price": "13.85"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "3672",
+      "name": "康聯訊",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "8.51",
+      "key_price": "9.41"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "3693",
+      "name": "營邦",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "433.5",
+      "key_price": "434.5"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "3709",
+      "name": "鑫聯大投控",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "47.05",
+      "key_price": "47.65"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "4102",
+      "name": "永日",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "16.2",
+      "key_price": "16.4"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "4107",
+      "name": "邦特",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "102.0",
+      "key_price": "103.5"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "4116",
+      "name": "明基醫",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "38.5",
+      "key_price": "38.55"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "4127",
+      "name": "天良",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "28.65",
+      "key_price": "28.95"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "4154",
+      "name": "樂威科-KY",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "9.95",
+      "key_price": "10.2"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "4168",
+      "name": "醣聯",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "16.8",
+      "key_price": "17.55"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "4171",
+      "name": "瑞基",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "11.65",
+      "key_price": "12.2"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "4188",
+      "name": "安克",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "10.4",
+      "key_price": "10.85"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "4304",
+      "name": "勝昱",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "13.05",
+      "key_price": "13.25"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "4402",
+      "name": "郡都開發",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "10.35",
+      "key_price": "10.65"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "4541",
+      "name": "晟田",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "40.15",
+      "key_price": "40.5"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "4716",
+      "name": "大立",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "12.9",
+      "key_price": "12.95"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "5205",
+      "name": "中茂",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "16.15",
+      "key_price": "17.0"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "5211",
+      "name": "蒙恬",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "15.3",
+      "key_price": "15.35"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "5213",
+      "name": "亞昕",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "18.15",
+      "key_price": "18.4"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "5251",
+      "name": "天鉞電",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "16.1",
+      "key_price": "16.15"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "5302",
+      "name": "太欣",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "6.93",
+      "key_price": "7.12"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "5310",
+      "name": "天剛",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "22.8",
+      "key_price": "23.2"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "5344",
+      "name": "立衛",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "10.45",
+      "key_price": "10.7"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "5355",
+      "name": "佳總",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "10.35",
+      "key_price": "11.1"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "5455",
+      "name": "昇益",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "26.6",
+      "key_price": "28.55"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "5512",
+      "name": "力麒",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "6.04",
+      "key_price": "6.09"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "5543",
+      "name": "桓鼎-KY",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "23.8",
+      "key_price": "24.0"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "5603",
+      "name": "陸海",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "12.4",
+      "key_price": "12.5"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "6020",
+      "name": "大展證",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "18.2",
+      "key_price": "18.5"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "6101",
+      "name": "寬魚國際",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "35.25",
+      "key_price": "35.5"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "6144",
+      "name": "得利影",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "11.85",
+      "key_price": "12.1"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "6171",
+      "name": "大城地產",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "21.95",
+      "key_price": "22.05"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "6246",
+      "name": "臺龍",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "11.1",
+      "key_price": "11.15"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "6294",
+      "name": "智基",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "22.8",
+      "key_price": "23.3"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "6462",
+      "name": "神盾",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "66.6",
+      "key_price": "67.1"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "6470",
+      "name": "宇智",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "40.45",
+      "key_price": "40.8"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "6496",
+      "name": "科懋",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "20.3",
+      "key_price": "21.0"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "6498",
+      "name": "久禾光",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "43.45",
+      "key_price": "44.75"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "6510",
+      "name": "精測",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "2250.0",
+      "key_price": "2255.0"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "6527",
+      "name": "明達醫",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "69.9",
+      "key_price": "70.0"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "6593",
+      "name": "台灣銘板",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "29.1",
+      "key_price": "29.55"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "6609",
+      "name": "瀧澤科",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "38.05",
+      "key_price": "38.6"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "6616",
+      "name": "特昇-KY",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "7.4",
+      "key_price": "7.52"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "6617",
+      "name": "共信-KY",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "91.0",
+      "key_price": "94.0"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "6661",
+      "name": "威健生技",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "14.35",
+      "key_price": "14.55"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "6684",
+      "name": "安格",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "33.6",
+      "key_price": "33.8"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "6720",
+      "name": "久昌",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "84.0",
+      "key_price": "84.8"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "6767",
+      "name": "台微醫",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "20.35",
+      "key_price": "21.6"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "6804",
+      "name": "明係",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "13.8",
+      "key_price": "14.15"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "6823",
+      "name": "濾能",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "43.3",
+      "key_price": "44.9"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "6844",
+      "name": "諾貝兒",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "53.0",
+      "key_price": "54.0"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "6859",
+      "name": "伯特光",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "91.2",
+      "key_price": "91.5"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "6875",
+      "name": "國邑*",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "21.35",
+      "key_price": "21.5"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "6929",
+      "name": "佑全",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "19.7",
+      "key_price": "19.8"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "6938",
+      "name": "藍新資訊",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "71.7",
+      "key_price": "73.9"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "6971",
+      "name": "惠民實業",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "21.05",
+      "key_price": "21.1"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "6986",
+      "name": "和迅",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "36.3",
+      "key_price": "36.9"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "7402",
+      "name": "邑錡",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "62.2",
+      "key_price": "62.4"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "7715",
+      "name": "裕山",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "19.25",
+      "key_price": "19.3"
+    },
+    {
+      "date": "2026-11-25",
       "code": "7716",
       "name": "昱臺國際",
       "market": "上櫃",
       "direction": "黑K",
-      "price": "22.85",
-      "key_price": "23.3"
+      "price": "22.25",
+      "key_price": "22.85"
     },
     {
-      "date": "2026-11-24",
+      "date": "2026-11-25",
+      "code": "7723",
+      "name": "築間",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "15.3",
+      "key_price": "15.4"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "7757",
+      "name": "金色三麥",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "79.0",
+      "key_price": "79.8"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "7782",
+      "name": "光速火箭",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "18.6",
+      "key_price": "18.75"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "7825",
+      "name": "和亞智慧",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "37.5",
+      "key_price": "37.7"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "8038",
+      "name": "長園科",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "20.9",
+      "key_price": "21.0"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "8042",
+      "name": "金山電",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "77.3",
+      "key_price": "77.7"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "8054",
+      "name": "安國",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "55.2",
+      "key_price": "56.3"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "8068",
+      "name": "全達",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "12.8",
+      "key_price": "13.2"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "8069",
+      "name": "元太",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "120.5",
+      "key_price": "121.0"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "8077",
+      "name": "洛碁",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "38.0",
+      "key_price": "38.6"
+    },
+    {
+      "date": "2026-11-25",
       "code": "8097",
       "name": "常珵",
       "market": "上櫃",
       "direction": "黑K",
-      "price": "47.25",
-      "key_price": "47.35"
+      "price": "47.1",
+      "key_price": "47.25"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "8111",
+      "name": "立碁",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "56.0",
+      "key_price": "56.1"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "8410",
+      "name": "森田",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "19.75",
+      "key_price": "19.8"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "8416",
+      "name": "實威",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "163.0",
+      "key_price": "164.0"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "8424",
+      "name": "惠普",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "66.3",
+      "key_price": "66.4"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "8489",
+      "name": "三貝德",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "18.7",
+      "key_price": "19.1"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "8916",
+      "name": "光隆",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "38.4",
+      "key_price": "38.45"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "8935",
+      "name": "邦泰",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "13.95",
+      "key_price": "14.5"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "8936",
+      "name": "國統",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "32.8",
+      "key_price": "33.6"
+    },
+    {
+      "date": "2026-11-25",
+      "code": "8938",
+      "name": "明安",
+      "market": "上櫃",
+      "direction": "黑K",
+      "price": "40.6",
+      "key_price": "40.7"
     }
   ]
 }
